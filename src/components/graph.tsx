@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import Graph from "react-graph-vis";
-import { graph1 } from "../data.ts/graph";
+import { graph1 } from "../data.ts/graphData";
 import Dialog from "./dialog";
 
 function GraphView() {
@@ -12,15 +13,10 @@ function GraphView() {
   const originalGraph = graph1;
   const [filteredGraph, setFilteredGraph] = useState<any>(originalGraph);
 
-  // Filter nodes based on age and department
+  // Filter nodes based on department
   const filterNodes = () => {
     let filteredNodes = originalGraph.nodes;
 
-    if (nodeFilterValue !== "") {
-      filteredNodes = filteredNodes.filter(
-        (node: any) => node.age === nodeFilterValue
-      );
-    }
 
     if (departmentFilterValue !== "") {
       filteredNodes = filteredNodes.filter(
@@ -84,27 +80,6 @@ function GraphView() {
     <div>
       <div>
         <label>
-          <input
-            type="checkbox"
-            value="kid"
-            checked={nodeFilterValue === "kid"}
-            onChange={handleCheckboxChange}
-          />
-          Kid
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="adult"
-            checked={nodeFilterValue === "adult"}
-            onChange={handleCheckboxChange}
-          />
-          Adult
-        </label>
-      </div>
-
-      <div>
-        <label>
           Department:
           <select
             value={departmentFilterValue}
@@ -137,6 +112,5 @@ function GraphView() {
 }
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<GraphView />, rootElement);
 
 export default GraphView;
