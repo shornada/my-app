@@ -15,7 +15,7 @@ export const graph1 = {
         { id: 2, label: "Základy softwarových projektů", tags: ["Analýza", "Projektové řízení"], title: "node 2 tootip text", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
         { id: 3, label: "Základy algoritmizace", tags: ["Algoritmizace", "Programování"], title: "node 3 tootip text", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
         { id: 4, label: "Základy počítačových systémů", tags: ["Hardware"], title: "node 4 tootip text", color: firstSemColor, department: 13138, specialization: ["mandatory"] },
-        { id: 5, label: "Základy multimediální tvorby", tags: ["Multimédia"], title: "node 5 tootip text", color: firstSemColor, department: 13139, specialization: ["mandatory", "multimedia"] },
+        { id: 5, label: "Základy multimediální tvorby", tags: ["Multimédia"], title: "node 5 tootip text", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
         { id: 6, label: "Základy webových aplikací", tags: ["Web", "Multimédia"], title: "node 5 tootip text", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
 
         // 2. semester

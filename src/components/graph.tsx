@@ -10,6 +10,7 @@ function GraphView() {
     const [selectedNode, setSelectedNode] = useState<any | null>(null);
     const [departmentFilterValue, setDepartmentFilterValue] = useState<string>("");
     const [tagFilterValues, setTagFilterValues] = useState<string[]>([]);
+    const [specializationFilterValue, setSpecializationFilterValue] = useState<string>("");
     const [filteredGraph, setFilteredGraph] = useState<any>(graph1);
 
     const filterNodes = () => {
@@ -27,6 +28,15 @@ function GraphView() {
             );
         }
 
+        if (specializationFilterValue !== "") {
+            filteredNodes = filteredNodes.filter(
+                (node) =>
+                    node.specialization &&
+                    (node.specialization.includes(specializationFilterValue) ||
+                        node.specialization.includes("mandatory"))
+            );
+        }
+
         setFilteredGraph({
             ...graph1,
             nodes: filteredNodes,
@@ -35,7 +45,7 @@ function GraphView() {
 
     useEffect(() => {
         filterNodes();
-    }, [departmentFilterValue, tagFilterValues]);
+    }, [departmentFilterValue, tagFilterValues, specializationFilterValue]);
 
     const closeDialog = () => {
         setSelectedNode(null);
@@ -47,6 +57,15 @@ function GraphView() {
             : [...tagFilterValues, tag];
 
         setTagFilterValues(updatedTags);
+    };
+    const handleSpecializationDropdownChange = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        const value = event.target.value;
+        setSpecializationFilterValue(value);
+    };
+    const handleSpecializationReset = () => {
+        setSpecializationFilterValue("");
     };
 
     const handleDropdownChange = (
@@ -83,6 +102,28 @@ function GraphView() {
     return (
         <div className="graph-container">
             <div className="filter-container">
+                
+            <div className="specialization-filter">
+                    <label>Specialization:</label>
+                    <select
+                        value={specializationFilterValue}
+                        onChange={handleSpecializationDropdownChange}
+                    >
+                        <option value="">All</option>
+                        {Array.from(
+                            new Set(
+                                graph1.nodes
+                                    .filter((node: any) => node.specialization)
+                                    .flatMap((node: any) => node.specialization)
+                            )
+                        ).map((specialization) => (
+                            <option key={specialization} value={specialization}>
+                                {specialization}
+                            </option>
+                        ))}
+                    </select>
+                    <button onClick={handleSpecializationReset}>Reset</button>
+                </div>
                 <div className="tag-filters">
                     <label>Tags:</label>
                     {tags.map((tag) => (
@@ -119,12 +160,14 @@ function GraphView() {
 
             <Graph graph={filteredGraph} options={options} events={events} />
 
-            {selectedNode && (
-                <div className="dialog">
-                    <Dialog node={selectedNode} onClose={closeDialog} />
-                </div>
-            )}
-        </div>
+            {
+        selectedNode && (
+            <div className="dialog">
+                <Dialog node={selectedNode} onClose={closeDialog} />
+            </div>
+        )
+    }
+        </div >
     );
 }
 
