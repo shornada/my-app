@@ -27,7 +27,6 @@ code {
 }
 
 /* Dialog.css */
-
 .modal {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -44,8 +43,8 @@ code {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  max-width: 600px; /* Adjust the max-width as needed */
-  width: 100%;
+  width: 90%; /* Adjust the width as needed */
+  max-width: 400px; /* Set a maximum width */
   text-align: left;
 }
 
@@ -66,6 +65,7 @@ code {
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  width: 100%; /* Make the button full-width */
 }
 
 .close-button:hover {

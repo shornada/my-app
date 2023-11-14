@@ -2,8 +2,9 @@ import React from 'react';
 import Modal from 'react-modal';
 import { dialogData } from '../data.ts/dialogData';
 
+
 interface DialogProps {
-  node: number; // Assuming node is the ID of the node
+  node: number;
   onClose: () => void;
 }
 
@@ -11,12 +12,13 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose }) => {
   const currentNodeData = dialogData.find((item) => item.ID === node);
 
   if (!currentNodeData) {
-    // Handle the case when the node is not found
     return (
       <div className="modal">
         <div className="modal-content">
           <h2>Node not found</h2>
-          <button onClick={onClose}>Zavřít</button>
+          <button onClick={onClose} className="close-button">
+            Zavřít
+          </button>
         </div>
       </div>
     );
