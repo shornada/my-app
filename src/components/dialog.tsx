@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { dialogData } from '../data.ts/dialogData';
+import { dialogData } from '../data/dialogData';
 
 
 interface DialogProps {

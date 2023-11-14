@@ -1,0 +1,27 @@
+export const tagsData = [
+    "Matematika",
+    "Analýza",
+    "Projektové řízení",
+    "Algoritmizace",
+    "Programování",
+    "Hardware",
+    "Multimédia",
+    "Web",
+    "Teamwork",
+    "Testování",
+    "Databáze",
+    "Architektura",
+    "Bezpečnost",
+    "Sítě",
+    "Podnikání",
+    "Optimalizace",
+    "Linux",
+    "IoT",
+    "Procesy",
+    "Mobilní aplikace",
+    "Vytváření grafiky",
+    "3D modelování",
+    "VR",
+    "Grafika"
+  ];
+  
