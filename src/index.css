@@ -16,6 +16,8 @@ code {
 
 /* Dialog.css */
 
+/* Dialog.css */
+
 .modal {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -35,6 +37,8 @@ code {
   width: 90%;
   max-width: 600px;
   text-align: left;
+  max-height: 400px; /* Set the desired fixed height */
+  overflow-y: auto; /* Enable vertical scrolling when content exceeds the fixed height */
 }
 
 .dialog-list {
@@ -68,6 +72,7 @@ code {
     max-width: 100%;
   }
 }
+
 
 /* Styles for the GraphView component */
 
