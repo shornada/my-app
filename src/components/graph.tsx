@@ -12,6 +12,7 @@ function GraphView() {
     const [tagFilterValues, setTagFilterValues] = useState<string[]>([]);
     const [specializationFilterValue, setSpecializationFilterValue] = useState<string>("");
     const [filteredGraph, setFilteredGraph] = useState<any>(graph1);
+    const [mainTagFilterValue, setMainTagFilterValue] = useState<string>("");
 
     const filterNodes = () => {
         let filteredNodes = graph1.nodes;
@@ -36,16 +37,22 @@ function GraphView() {
                         node.specialization.includes("mandatory"))
             );
         }
+        if (mainTagFilterValue !== "") {
+            filteredNodes = filteredNodes.filter(
+                (node) => node.mainTag === mainTagFilterValue
+            );
+        }
 
         setFilteredGraph({
             ...graph1,
             nodes: filteredNodes,
         });
+    
     };
 
     useEffect(() => {
         filterNodes();
-    }, [departmentFilterValue, tagFilterValues, specializationFilterValue]);
+    }, [departmentFilterValue, tagFilterValues, specializationFilterValue, mainTagFilterValue]);
 
     const closeDialog = () => {
         setSelectedNode(null);
@@ -83,6 +90,11 @@ function GraphView() {
         setTagFilterValues([]);
     };
 
+    const handleMainTagCheckboxChange = (mainTag: string) => {
+        setMainTagFilterValue(mainTag === mainTagFilterValue ? "" : mainTag);
+    };
+
+
     const options = {
         layout: {
             hierarchical: false,
@@ -102,6 +114,22 @@ function GraphView() {
     return (
         <div className="graph-container">
             <div className="filter-container">
+                <div className="tag-filters">
+                    <label>Main Tag:</label>
+                    {Array.from(new Set(graph1.nodes.map((node: any) => node.mainTag)))
+                        .map((mainTag) => (
+                            <label key={mainTag}>
+                                <input
+                                    type="checkbox"
+                                    value={mainTag}
+                                    checked={mainTagFilterValue === mainTag}
+                                    onChange={() => handleMainTagCheckboxChange(mainTag)}
+                                />
+                                {mainTag}
+                            </label>
+                        ))}
+                    <button onClick={() => setMainTagFilterValue("")}>Reset</button>
+                </div>
                 
             <div className="specialization-filter">
                     <label>Specialization:</label>
@@ -124,7 +152,7 @@ function GraphView() {
                     </select>
                     <button onClick={handleSpecializationReset}>Reset</button>
                 </div>
-                <div className="tag-filters">
+                {/* <div className="tag-filters">
                     <label>Tags:</label>
                     {tags.map((tag) => (
                         <label key={tag}>
@@ -138,7 +166,7 @@ function GraphView() {
                         </label>
                     ))}
                     <button onClick={handleTagReset}>Reset Tags</button>
-                </div>
+                </div> */}
                 <div className="department-filter">
                     <label>Department:</label>
                     <select

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://shornada.github.io/my-app/",
   "dependencies": {
+    "@rsuite/charts": "^5.2.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -16,6 +17,7 @@
     "react-graph-vis": "^1.0.7",
     "react-modal": "^3.16.1",
     "react-scripts": "5.0.1",
+    "rsuite": "^5.44.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "zustand": "^4.4.6"

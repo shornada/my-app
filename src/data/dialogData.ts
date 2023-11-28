@@ -11,7 +11,11 @@ export const dialogData =[
      "Tags": "Matematika",
      "Zaměření": "-",
      "Role P\/V\/PV": "P",
-     "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129206.html"
+     "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129206.html",
+     "Obsah":[
+        ['Matematika', 100],
+        ['Algoritmizace', 10],
+      ]
     },
     {
      "ID": 2,
@@ -25,7 +29,13 @@ export const dialogData =[
      "Tags": "Analýza, projektové řízení",
      "Zaměření": "-",
      "Role P\/V\/PV": "P",
-     "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626306.html"
+     "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626306.html",
+     "Obsah":[
+        ['Projektové řízení', 60],
+        ['Analýza', 30],
+        ['Týmová práce', 40],
+
+      ]
     },
     {
      "ID": 3,
