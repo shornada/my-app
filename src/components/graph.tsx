@@ -58,6 +58,12 @@ function GraphView() {
         setSelectedNode(null);
     };
 
+    const handleMainTagClick = (mainTag: string) => {
+        setMainTagFilterValue(mainTag);
+        filterNodes(); // Apply the filter when mainTag is clicked
+        closeDialog(); // Close the dialog after setting the filter
+      };
+      
     const handleTagCheckboxChange = (tag: string) => {
         const updatedTags = tagFilterValues.includes(tag)
             ? tagFilterValues.filter((t) => t !== tag)
@@ -191,8 +197,8 @@ function GraphView() {
             {
         selectedNode && (
             <div className="dialog">
-                <Dialog node={selectedNode} onClose={closeDialog} />
-            </div>
+          <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
+        </div>
         )
     }
         </div >

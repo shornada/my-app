@@ -139,3 +139,31 @@ button:hover {
   background-color: #0056b3;
   border-color: #0056b3;
 }
+
+/* Add tooltip styles */
+span.main-tag {
+  /* Add visual indication that the MainTag is clickable */
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  position: relative;
+}
+
+span.main-tag:hover::after {
+  content: "Po kliknutí se zobrazí související předměty podle obsahu.";
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 10px; /* Increase padding for better visibility */
+  border-radius: 8px; /* Round the corners for a bubble effect */
+  top: calc(100% + 5px); /* Position 5px below the MainTag */
+  left: 50%; /* Center the tooltip relative to the MainTag */
+  z-index: 1;
+  font-size: 14px;
+  white-space: nowrap; /* Prevent line breaks */
+  width: max-content; /* Make the tooltip size based on content */
+
+  /* Check if the tooltip exceeds the left or right edge of the dialog */
+  left: max(10px, min(50%, left - 50%)); /* Adjust as needed */
+  right: auto;
+}
