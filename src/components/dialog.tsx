@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, LineChart, Line } from '@rsuite/charts';
+import { BarChart, LineChart, Line, YAxis, Bars } from '@rsuite/charts';
 import { dialogData } from '../data/dialogData';
 
 interface DialogProps {
@@ -33,17 +33,28 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
   });
 
   const sampleData = [
-    ['1', 10],
-    ['2', 25],
-    ['3', 15],
-    ['4', 40],
-    ['5', 15],
+    ["1", 3, 1],
+    ["2", 2, 1],
+    ["3", 1, 3],
+    ["4", 5, 4],
+    ["5", 3, 1],
+    ["6", 1, 3],
+    ["7", 3, 2],
+    ["8", 4, 1],
+    ["9", 1, 3],
+    ["10", 3, 1],
+    ["11", 4, 3],
+    ["12", 2, 4],
+    ["13", 3, 5],
+    ["14", 9, 7],
   ];
-
-  const lineChartData: [string, ...number[]][] = sampleData.map(([label, value]) => [
+  
+  const formattedSampleData: [string, ...number[]][] = sampleData.map(([label, ...values]) => [
     String(label),
-    Number(value),
+    ...values.map(Number),
   ]);
+  
+
 
   return (
     <div className="modal">
@@ -72,10 +83,20 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
               </li>
             ))}
         </ul>
-        <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false} />
-        <LineChart data={lineChartData}>
-          <Line name="Náročnost" area />
-        </LineChart>
+        <h3>Rozvržení obsahu předmětu</h3>
+        <BarChart
+          name="Rozvržení obsahu"
+          data={formattedObsahData}
+          yAxis={false} >
+          <Bars name="Aplikuje" color="#2485C1" stack="A" />
+          <Bars name="Doplňuje" color="#32A4D4" stack="A" />
+          <Bars name="Rozšiřuje" color="#34C3FF" stack="A" />
+        </ BarChart >
+        <h3>Náročnost předmětu</h3>
+        <BarChart data={formattedSampleData} >
+          <Bars name="Testy/úkoly" barWidth={10} />
+          <Line name="Průběžná náročnost" />
+        </BarChart>
 
         <button onClick={onClose} className="close-button">
           Zavřít

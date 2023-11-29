@@ -14,8 +14,10 @@ export const dialogData =[
      "Role P\/V\/PV": "P",
      "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129206.html",
      "Obsah":[
-        ['Matematika', 100],
-        ['Algoritmizace', 10],
+        ["Analýza", 650, 650, 750],
+        ["Matematika", 200, 200, 1000],
+        ["Algoritmizace", 650, 650, 1400],
+
       ]
     },
     {
