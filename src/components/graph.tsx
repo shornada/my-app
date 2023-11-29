@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Graph from "react-graph-vis";
 import { graph1 } from "../data/graphData";
-import { tagsData } from "../data/tags";
 import Dialog from "./dialog";
-
-const tags = tagsData;
+import FilterComponent from "./filters";
 
 function GraphView() {
-    const [selectedNode, setSelectedNode] = useState<any | null>(null);
-    const [departmentFilterValue, setDepartmentFilterValue] = useState<string>("");
-    const [tagFilterValues, setTagFilterValues] = useState<string[]>([]);
-    const [specializationFilterValue, setSpecializationFilterValue] = useState<string>("");
-    const [filteredGraph, setFilteredGraph] = useState<any>(graph1);
-    const [mainTagFilterValue, setMainTagFilterValue] = useState<string>("");
-    const [hoveredNode, setHoveredNode] = useState<any | null>(null);
-    const [highlightedNodes, setHighlightedNodes] = useState<number[]>([]);
+  const [selectedNode, setSelectedNode] = useState<any | null>(null);
+  const [departmentFilterValue, setDepartmentFilterValue] = useState<string>("");
+  const [tagFilterValues, setTagFilterValues] = useState<string[]>([]);
+  const [specializationFilterValue, setSpecializationFilterValue] = useState<string>("");
+  const [filteredGraph, setFilteredGraph] = useState<any>(graph1);
+  const [mainTagFilterValue, setMainTagFilterValue] = useState<string>("");
+  const [hoveredNode, setHoveredNode] = useState<any | null>(null);
+  const [highlightedNodes, setHighlightedNodes] = useState<number[]>([]);
 
-
-    const filterNodes = () => {
+  const filterNodes = () => {
         let filteredNodes = graph1.nodes;
 
         if (departmentFilterValue !== "") {
@@ -55,17 +52,17 @@ function GraphView() {
 
     useEffect(() => {
         filterNodes();
-    }, [departmentFilterValue, tagFilterValues, specializationFilterValue, mainTagFilterValue]);
-
-    const closeDialog = () => {
+      }, [departmentFilterValue, tagFilterValues, specializationFilterValue, mainTagFilterValue]);
+    
+      const closeDialog = () => {
         setSelectedNode(null);
-    };
-
-    const handleMainTagClick = (mainTag: string) => {
+      };
+    
+      const handleMainTagClick = (mainTag: string) => {
         setMainTagFilterValue(mainTag);
-        filterNodes(); // Apply the filter when mainTag is clicked
-        closeDialog(); // Close the dialog after setting the filter
-    };
+        filterNodes();
+        closeDialog();
+      };
 
     const handleTagCheckboxChange = (tag: string) => {
         const updatedTags = tagFilterValues.includes(tag)
@@ -95,8 +92,8 @@ function GraphView() {
         setDepartmentFilterValue("");
     };
 
-    const handleTagReset = () => {
-        setTagFilterValues([]);
+    const handleMainTagReset = () => {
+        setMainTagFilterValue("");
     };
 
     const handleMainTagCheckboxChange = (mainTag: string) => {
@@ -146,92 +143,42 @@ function GraphView() {
     };
     
     return (
-        <div className="graph-container">
-            <div className="filter-container">
-                <div className="tag-filters">
-                    <label>Main Tag:</label>
-                    {Array.from(new Set(graph1.nodes.map((node: any) => node.mainTag)))
-                        .map((mainTag) => (
-                            <label key={mainTag}>
-                                <input
-                                    type="checkbox"
-                                    value={mainTag}
-                                    checked={mainTagFilterValue === mainTag}
-                                    onChange={() => handleMainTagCheckboxChange(mainTag)}
-                                />
-                                {mainTag}
-                            </label>
-                        ))}
-                    <button onClick={() => setMainTagFilterValue("")}>Reset</button>
-                </div>
+    <div className="graph-container">
+      <FilterComponent
+        mainTagFilterValue={mainTagFilterValue}
+        specializationFilterValue={specializationFilterValue}
+        departmentFilterValue={departmentFilterValue}
+        handleMainTagCheckboxChange={handleMainTagCheckboxChange}
+        handleSpecializationDropdownChange={handleSpecializationDropdownChange}
+        handleDropdownChange={handleDropdownChange}
+        handleMainTagReset={handleMainTagReset}
+        handleSpecializationReset={handleSpecializationReset}
+        handleDepartmentReset={handleDepartmentReset}
+      />
 
-                <div className="specialization-filter">
-                    <label>Specialization:</label>
-                    <select
-                        value={specializationFilterValue}
-                        onChange={handleSpecializationDropdownChange}
-                    >
-                        <option value="">All</option>
-                        {Array.from(
-                            new Set(
-                                graph1.nodes
-                                    .filter((node: any) => node.specialization)
-                                    .flatMap((node: any) => node.specialization)
-                            )
-                        ).map((specialization) => (
-                            <option key={specialization} value={specialization}>
-                                {specialization}
-                            </option>
-                        ))}
-                    </select>
-                    <button onClick={handleSpecializationReset}>Reset</button>
-                </div>
-
-                <div className="department-filter">
-                    <label>Department:</label>
-                    <select
-                        value={departmentFilterValue}
-                        onChange={handleDropdownChange}
-                    >
-                        <option value="">All</option>
-                        {Array.from(
-                            new Set(graph1.nodes.map((node: any) => node.department))
-                        ).map((department) => (
-                            <option key={department} value={department.toString()}>
-                                Department {department}
-                            </option>
-                        ))}
-                    </select>
-                    <button onClick={handleDepartmentReset}>Reset</button>
-                </div>
-            </div>
-
-            <Graph
-                graph={filteredGraph}
-                options={options}
-                events={events}
-                getNetwork={(network: any) => {
-                    // Highlight nodes on hover
-                    network.on("hoverNode", ({ node }: { node: any }) => {
-                        if (node) {
-                            network.selectNodes([node]);
-                        }
-                    });
-                    // Reset highlighting on mouseout
-                    network.on("blurNode", () => {
-                        network.unselectAll();
-                    });
-                }}
-            />
-            {
-                selectedNode && (
-                    <div className="dialog">
-                        <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
-                    </div>
-                )
+      <Graph
+        graph={filteredGraph}
+        options={options}
+        events={events}
+        getNetwork={(network: any) => {
+          network.on("hoverNode", ({ node }: { node: any }) => {
+            if (node) {
+              network.selectNodes([node]);
             }
-        </div >
-    );
+          });
+          network.on("blurNode", () => {
+            network.unselectAll();
+          });
+        }}
+      />
+
+      {selectedNode && (
+        <div className="dialog">
+          <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default GraphView;
