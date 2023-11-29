@@ -13,6 +13,9 @@ function GraphView() {
     const [specializationFilterValue, setSpecializationFilterValue] = useState<string>("");
     const [filteredGraph, setFilteredGraph] = useState<any>(graph1);
     const [mainTagFilterValue, setMainTagFilterValue] = useState<string>("");
+    const [hoveredNode, setHoveredNode] = useState<any | null>(null);
+    const [highlightedNodes, setHighlightedNodes] = useState<number[]>([]);
+
 
     const filterNodes = () => {
         let filteredNodes = graph1.nodes;
@@ -47,7 +50,7 @@ function GraphView() {
             ...graph1,
             nodes: filteredNodes,
         });
-    
+
     };
 
     useEffect(() => {
@@ -62,8 +65,8 @@ function GraphView() {
         setMainTagFilterValue(mainTag);
         filterNodes(); // Apply the filter when mainTag is clicked
         closeDialog(); // Close the dialog after setting the filter
-      };
-      
+    };
+
     const handleTagCheckboxChange = (tag: string) => {
         const updatedTags = tagFilterValues.includes(tag)
             ? tagFilterValues.filter((t) => t !== tag)
@@ -109,14 +112,39 @@ function GraphView() {
             color: "#000000",
         },
         height: "500px",
-    };
-
-    const events = {
-        select: ({ nodes }: { nodes: any }) => {
-            setSelectedNode(nodes[0]);
+        nodes: {
+            shape: "dot",
+            size: 20,
+            borderWidth: 2,
+            shadow: true,
+            font: {
+                size: 12,
+            },
+        },
+        interaction: {
+            hover: true,
         },
     };
 
+
+    const events = {
+        click: ({ nodes }: { nodes: any }) => {
+            // Node clicked, update selectedNode
+            setSelectedNode(nodes.length > 0 ? nodes[0] : null);
+        },
+        hoverNode: ({ node }: { node: any }) => {
+            setHoveredNode(node);
+            const neighbors = graph1.edges
+                .filter((edge: any) => edge.from === node || edge.to === node)
+                .map((edge: any) => (edge.from === node ? edge.to : edge.from));
+            setHighlightedNodes([...neighbors, node]);
+        },
+        blurNode: () => {
+            setHoveredNode(null);
+            setHighlightedNodes([]);
+        },
+    };
+    
     return (
         <div className="graph-container">
             <div className="filter-container">
@@ -136,8 +164,8 @@ function GraphView() {
                         ))}
                     <button onClick={() => setMainTagFilterValue("")}>Reset</button>
                 </div>
-                
-            <div className="specialization-filter">
+
+                <div className="specialization-filter">
                     <label>Specialization:</label>
                     <select
                         value={specializationFilterValue}
@@ -158,21 +186,7 @@ function GraphView() {
                     </select>
                     <button onClick={handleSpecializationReset}>Reset</button>
                 </div>
-                {/* <div className="tag-filters">
-                    <label>Tags:</label>
-                    {tags.map((tag) => (
-                        <label key={tag}>
-                            <input
-                                type="checkbox"
-                                value={tag}
-                                checked={tagFilterValues.includes(tag)}
-                                onChange={() => handleTagCheckboxChange(tag)}
-                            />
-                            {tag}
-                        </label>
-                    ))}
-                    <button onClick={handleTagReset}>Reset Tags</button>
-                </div> */}
+
                 <div className="department-filter">
                     <label>Department:</label>
                     <select
@@ -192,15 +206,30 @@ function GraphView() {
                 </div>
             </div>
 
-            <Graph graph={filteredGraph} options={options} events={events} />
-
+            <Graph
+                graph={filteredGraph}
+                options={options}
+                events={events}
+                getNetwork={(network: any) => {
+                    // Highlight nodes on hover
+                    network.on("hoverNode", ({ node }: { node: any }) => {
+                        if (node) {
+                            network.selectNodes([node]);
+                        }
+                    });
+                    // Reset highlighting on mouseout
+                    network.on("blurNode", () => {
+                        network.unselectAll();
+                    });
+                }}
+            />
             {
-        selectedNode && (
-            <div className="dialog">
-          <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
-        </div>
-        )
-    }
+                selectedNode && (
+                    <div className="dialog">
+                        <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
+                    </div>
+                )
+            }
         </div >
     );
 }
