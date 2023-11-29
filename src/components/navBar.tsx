@@ -25,6 +25,7 @@ import {
 
 import logoImg from "../assets/logo.svg";
 
+// ... (other imports)
 
 interface SideBarProps {
     toggleView: (view: 'graph' | 'grid') => void;
@@ -33,13 +34,13 @@ interface SideBarProps {
   export function SideBar({ toggleView }: SideBarProps) {
     const [sideBar, setSideBar] = useState(false);
   
-    function handleChangeSideBar() {
-      setSideBar((prevState) => !prevState);
-    }
+    const handleChangeSideBar = () => {
+      setSideBar(!sideBar);
+    };
   
     const handleViewChange = (view: 'graph' | 'grid') => {
       toggleView(view);
-      handleChangeSideBar();
+      setSideBar(false); // Close the sidebar after changing the view
     };
   
     return (

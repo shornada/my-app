@@ -119,7 +119,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         edges: {
             color: "#000000",
         },
-        height: "500px",
+        height: "1000px",
         nodes: {
             shape: "dot",
             size: 20,
