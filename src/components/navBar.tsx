@@ -25,62 +25,77 @@ import {
 
 import logoImg from "../assets/logo.svg";
 
-export function SideBar() {
-	const [sideBar, setSideBar] = useState(false);
 
-	function handleChangeSideBar() {
-		setSideBar((prevState) => !prevState);
-	}
-	return (
-		<Container>
-			<Content>
-				{!sideBar ? (
-					<ClosedSideBar>
-						<nav>
-							<button onClick={handleChangeSideBar}>
-								<BsArrowRight />
-							</button>
-							{/* Links principais do app */}
-							<ul>
-								<a href="/" title="Graf">
-									<DiReact />
-								</a>
-								<a href="/" title="Dlaždice">
-									<DiReact />
-								</a>
-
-							</ul>
-						</nav>
-						
-					</ClosedSideBar>
-				) : (
-					<OpenSideBar>
-						<section>
-							<nav>
-								<span>
-									<button onClick={handleChangeSideBar}>
-										<BsArrowLeft />
-									</button>
-								</span>
-								{/* Icones principais do app */}
-								<ul>
-									<a href="/" title="Graf">
-										<DiReact />
-										<p>Graf</p>
-									</a>
-									<a href="/" title="Dlaždice">
-										<DiReact />
-										<p>Dlaždice</p>
-									</a>
-
-								</ul>
-							</nav>
-						
-						</section>
-						<aside onClick={handleChangeSideBar} />
-					</OpenSideBar>
-				)}
-			</Content>
-		</Container>
-	);
-}
+interface SideBarProps {
+    toggleView: (view: 'graph' | 'grid') => void;
+  }
+  
+  export function SideBar({ toggleView }: SideBarProps) {
+    const [sideBar, setSideBar] = useState(false);
+  
+    function handleChangeSideBar() {
+      setSideBar((prevState) => !prevState);
+    }
+  
+    const handleViewChange = (view: 'graph' | 'grid') => {
+      toggleView(view);
+      handleChangeSideBar();
+    };
+  
+    return (
+      <Container>
+        <Content>
+          {!sideBar ? (
+            <ClosedSideBar>
+              <nav>
+                <button onClick={handleChangeSideBar}>
+                  <BsArrowRight />
+                </button>
+                {/* Links principais do app */}
+                <ul>
+                  <li>
+                    <a href="#" title="Graf" onClick={() => handleViewChange('graph')}>
+                      <DiReact />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" title="Dlaždice" onClick={() => handleViewChange('grid')}>
+                      <DiReact />
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </ClosedSideBar>
+          ) : (
+            <OpenSideBar>
+              <section>
+                <nav>
+                  <span>
+                    <button onClick={handleChangeSideBar}>
+                      <BsArrowLeft />
+                    </button>
+                  </span>
+                  {/* Icones principais do app */}
+                  <ul>
+                    <li>
+                      <a href="#" title="Graf" onClick={() => handleViewChange('graph')}>
+                        <DiReact />
+                        <p>Graf</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" title="Dlaždice" onClick={() => handleViewChange('grid')}>
+                        <DiReact />
+                        <p>Dlaždice</p>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </section>
+              <aside onClick={handleChangeSideBar} />
+            </OpenSideBar>
+          )}
+        </Content>
+      </Container>
+    );
+  }
