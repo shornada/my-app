@@ -5,7 +5,6 @@ import Dialog from "./dialog";
 import FilterComponent from "./filters";
 import { CurrentView } from '../App';
 
-
 function GraphView({ currentView }: { currentView: CurrentView }) {
     const [selectedNode, setSelectedNode] = useState<any | null>(null);
     const [departmentFilterValue, setDepartmentFilterValue] = useState<string>("");
@@ -15,6 +14,9 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
     const [mainTagFilterValue, setMainTagFilterValue] = useState<string>("");
     const [hoveredNode, setHoveredNode] = useState<any | null>(null);
     const [highlightedNodes, setHighlightedNodes] = useState<number[]>([]);
+    const [network, setNetwork] = useState<any>(null);
+    const [isDialogOpen, setIsDialogOpen] = useState(false); // New state
+  
 
     const filterNodes = () => {
         let filteredNodes = graph1.nodes;
@@ -53,20 +55,18 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
 
     useEffect(() => {
         filterNodes();
-    }, [departmentFilterValue, tagFilterValues, specializationFilterValue, mainTagFilterValue]);
-
-    useEffect(() => {
-        // Reset the view to 'graph' when the component unmounts
+      }, [departmentFilterValue, tagFilterValues, specializationFilterValue, mainTagFilterValue]);
+    
+      useEffect(() => {
         return () => {
-            // You can add any cleanup logic here if needed
-            // For now, just reset the view to 'graph'
-            setFilteredGraph(graph1);
+          setFilteredGraph(graph1);
         };
-    }, []);
-
-    const closeDialog = () => {
+      }, []);
+    
+      const closeDialog = () => {
         setSelectedNode(null);
-    };
+        setIsDialogOpen(false); // Set dialog state to false when closing
+      };
 
     const handleMainTagClick = (mainTag: string) => {
         setMainTagFilterValue(mainTag);
@@ -121,12 +121,12 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         },
         height: "1000px",
         nodes: {
-            shape: "dot",
-            size: 20,
+            shape: "circle",
+            size: 15,
             borderWidth: 2,
             shadow: true,
             font: {
-                size: 12,
+                size: 15,
             },
         },
         interaction: {
@@ -134,63 +134,92 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         },
     };
 
+    const handleGetNetwork = (networkInstance: any) => {
+        setNetwork(networkInstance);
+    };
+
     const events = {
         click: ({ nodes }: { nodes: any }) => {
-            // Node clicked, update selectedNode
+            if (isDialogOpen) {
+              const popupElement = document.getElementById('custom-popup');
+              if (popupElement) {
+                popupElement.style.display = 'none';
+              }
+            }
             setSelectedNode(nodes.length > 0 ? nodes[0] : null);
+          },
+        hoverNode: ({ event, node }: { event: MouseEvent, node: any }) => {
+            if (network) {
+                setHoveredNode(node);
+                const neighbors = graph1.edges
+                    .filter((edge: any) => edge.from === node || edge.to === node)
+                    .map((edge: any) => (edge.from === node ? edge.to : edge.from));
+                setHighlightedNodes([...neighbors, node]);
+    
+                const hoveredNode = graph1.nodes.find((n: any) => n.id === node);
+                const popupContent = hoveredNode ? hoveredNode.name : '';
+    
+                // Use your custom logic to show/hide the popup
+                const popupElement = document.getElementById('custom-popup');
+                if (popupElement && event) {
+                    // Adjust the offset as needed
+                    const offset = 10;
+                    popupElement.innerHTML = `<div>${popupContent}</div>`;
+                    popupElement.style.left = `${event.pageX + offset}px`;
+                    popupElement.style.top = `${event.pageY + offset}px`;
+                    popupElement.style.display = 'block';
+                }
+            }
         },
-        hoverNode: ({ node }: { node: any }) => {
-            setHoveredNode(node);
-            const neighbors = graph1.edges
-                .filter((edge: any) => edge.from === node || edge.to === node)
-                .map((edge: any) => (edge.from === node ? edge.to : edge.from));
-            setHighlightedNodes([...neighbors, node]);
-        },
+    
         blurNode: () => {
             setHoveredNode(null);
             setHighlightedNodes([]);
+    
+            // Use your custom logic to hide the popup
+            const popupElement = document.getElementById('custom-popup');
+            if (popupElement) {
+                popupElement.style.display = 'none';
+            }
         },
     };
 
     return (
         <div className="graph-container">
-          <FilterComponent
-            mainTagFilterValue={mainTagFilterValue}
-            specializationFilterValue={specializationFilterValue}
-            departmentFilterValue={departmentFilterValue}
-            handleMainTagCheckboxChange={handleMainTagCheckboxChange}
-            handleSpecializationDropdownChange={handleSpecializationDropdownChange}
-            handleDropdownChange={handleDropdownChange}
-            handleMainTagReset={handleMainTagReset}
-            handleSpecializationReset={handleSpecializationReset}
-            handleDepartmentReset={handleDepartmentReset}
-          />
-    
-          {currentView === 'graph' && (
-            <Graph
-              graph={filteredGraph}
-              options={options}
-              events={events}
-              getNetwork={(network: any) => {
-                network.on("hoverNode", ({ node }: { node: any }) => {
-                  if (node) {
-                    network.selectNodes([node]);
-                  }
-                });
-                network.on("blurNode", () => {
-                  network.unselectAll();
-                });
-              }}
+            <FilterComponent
+                mainTagFilterValue={mainTagFilterValue}
+                specializationFilterValue={specializationFilterValue}
+                departmentFilterValue={departmentFilterValue}
+                handleMainTagCheckboxChange={handleMainTagCheckboxChange}
+                handleSpecializationDropdownChange={handleSpecializationDropdownChange}
+                handleDropdownChange={handleDropdownChange}
+                handleMainTagReset={handleMainTagReset}
+                handleSpecializationReset={handleSpecializationReset}
+                handleDepartmentReset={handleDepartmentReset}
             />
-          )}
-    
-          {selectedNode && (
-            <div className="dialog">
-              <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
-            </div>
-          )}
+
+            {currentView === 'graph' && (
+                <>
+                    {/* Graph component */}
+                    <Graph
+                        graph={filteredGraph}
+                        options={options}
+                        events={events}
+                        getNetwork={handleGetNetwork}
+                    />
+
+                    {/* Custom Popup */}
+                    <div id="custom-popup" className="custom-popup" style={{ display: 'none' }} />
+
+                    {selectedNode && (
+                        <div className="dialog">
+                            <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
+                        </div>
+                    )}
+                </>
+            )}
         </div>
-      );
-    }
-    
-    export default GraphView;
+    );
+}
+
+export default GraphView;

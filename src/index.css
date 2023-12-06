@@ -243,3 +243,14 @@ span.main-tag:hover::after {
 .grid-tile a:hover {
   text-decoration: underline;
 }
+
+.custom-popup {
+  position: absolute;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  z-index: 1000; /* Ensure the popup appears above the graph */
+  pointer-events: none;
+  display: none;
+}
