@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { BarChart, LineChart, Line, YAxis, Bars } from '@rsuite/charts';
 import { dialogData } from '../data/dialogData';
 
@@ -9,6 +9,27 @@ interface DialogProps {
 }
 
 const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        console.log('Clicked outside the modal. Closing...');
+        onClose();
+      }
+    };
+  
+    // Add event listener
+    window.addEventListener('mousedown', handleClickOutside);
+  
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+  
+  
+
   const currentNodeData = dialogData.find((item) => item.ID === node);
 
   if (!currentNodeData) {
@@ -55,9 +76,8 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
   ]);
   
 
-
   return (
-    <div className="modal">
+    <div className="modal" ref={modalRef}>
       <div className="modal-content">
         <h2>{currentNodeData.Název}</h2>
         <ul className="dialog-list">

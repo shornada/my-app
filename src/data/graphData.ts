@@ -11,7 +11,7 @@ export const graph1 = {
     nodes: [
         // 1. semester
         // 1. semester
-        { id: 0, name: "SIT", title: "node 1 tooltip text", label: "B6B01SIT", color: "#e04141", department: 13101 },
+       // { id: 0, name: "SIT", title: "node 1 tooltip text", label: "B6B01SIT", color: "#e04141", department: 13101 },
         { id: 1, name: "Základy diskrétní matematiky", mainTag: "Matematika", tags: ["Matematika"], title: "node 1 tooltip text", label: "B6B01ZDM", color: firstSemColor, department: 13101, specialization: ["mandatory"] },
         { id: 2, name: "Základy softwarových projektů", mainTag: "Analýza", tags: ["Analýza", "Projektové řízení"], title: "node 2 tooltip text", label: "B6B36ZSO", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
         { id: 3, name: "Základy algoritmizace", mainTag: "Programování", tags: ["Algoritmizace", "Programování"], title: "node 3 tooltip text", label: "B0B36ZAL", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
