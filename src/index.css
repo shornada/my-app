@@ -14,7 +14,6 @@ code {
     monospace;
 }
 
-/* Dialog.css */
 
 /* Dialog.css */
 
@@ -250,7 +249,6 @@ span.main-tag:hover::after {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  z-index: 1000; /* Ensure the popup appears above the graph */
   pointer-events: none;
   display: none;
 }

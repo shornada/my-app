@@ -122,17 +122,18 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         height: "1000px",
         nodes: {
             shape: "circle",
-            size: 15,
-            borderWidth: 2,
+            borderWidth: 4,
             shadow: true,
             font: {
                 size: 15,
             },
+            size: 20, 
         },
         interaction: {
             hover: true,
         },
     };
+    
 
     const handleGetNetwork = (networkInstance: any) => {
         setNetwork(networkInstance);
