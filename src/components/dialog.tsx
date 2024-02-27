@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { BarChart, LineChart, Line, YAxis, Bars } from '@rsuite/charts';
+import { BarChart, Bars, Line } from '@rsuite/charts';
 import { dialogData } from '../data/dialogData';
 
 interface DialogProps {
@@ -18,17 +18,15 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
         onClose();
       }
     };
-  
+
     // Add event listener
     window.addEventListener('mousedown', handleClickOutside);
-  
+
     // Remove event listener on component unmount
     return () => {
       window.removeEventListener('mousedown', handleClickOutside);
     };
   }, [onClose]);
-  
-  
 
   const currentNodeData = dialogData.find((item) => item.ID === node);
 
@@ -69,12 +67,41 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
     ["13", 3, 5],
     ["14", 9, 7],
   ];
-  
+
   const formattedSampleData: [string, ...number[]][] = sampleData.map(([label, ...values]) => [
     String(label),
     ...values.map(Number),
   ]);
-  
+
+  const zaměření = currentNodeData.Zaměření;
+
+  // Handling the case where "Zaměření" is a string
+  const zaměřeníString = typeof zaměření === 'string' ? zaměření : '';
+
+  // Handling the case where "Zaměření" is an object
+  const renderZaměřeníTable = (zaměření: any) => {
+    if (typeof zaměření === 'object') {
+      return (
+        <table className="table">
+        <thead>
+            <tr>
+              <th>Zaměření</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(zaměření).map(([key, value]) => (
+              <tr key={key}>
+                <td>{key}</td>
+                <td>{value as string}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+    }
+    return null;
+  };
 
   return (
     <div className="modal" ref={modalRef}>
@@ -91,12 +118,13 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
                     {value}
                   </a>
                 ) : key === 'MainTag' ? (
-                  <span
-                    className="main-tag"
-                    onClick={() => onMainTagClick(currentNodeData.MainTag)}
-                  >
+                  <span className="main-tag" onClick={() => onMainTagClick(currentNodeData.MainTag)}>
                     {currentNodeData.MainTag}
                   </span>
+                ) : key === 'Zaměření' ? (
+                  <>
+                    {zaměřeníString || renderZaměřeníTable(zaměření)}
+                  </>
                 ) : (
                   value
                 )}
@@ -104,16 +132,13 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
             ))}
         </ul>
         <h3>Rozvržení obsahu předmětu</h3>
-        <BarChart
-          name="Rozvržení obsahu"
-          data={formattedObsahData}
-          yAxis={false} >
+        <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false}>
           <Bars name="Aplikuje" color="#2485C1" stack="A" />
           <Bars name="Doplňuje" color="#32A4D4" stack="A" />
           <Bars name="Rozšiřuje" color="#34C3FF" stack="A" />
-        </ BarChart >
+        </BarChart>
         <h3>Náročnost předmětu</h3>
-        <BarChart data={formattedSampleData} >
+        <BarChart data={formattedSampleData}>
           <Bars name="Testy/úkoly" barWidth={10} />
           <Line name="Průběžná náročnost" />
         </BarChart>
