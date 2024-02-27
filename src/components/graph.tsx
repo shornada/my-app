@@ -4,11 +4,11 @@ import { graph1 } from "../data/graphData";
 import Dialog from "./dialog";
 import FilterComponent from "./filters";
 import { CurrentView } from '../App';
+import LegendGraphView from "./graphLegend";
 
 function GraphView({ currentView }: { currentView: CurrentView }) {
     const [selectedNode, setSelectedNode] = useState<any | null>(null);
     const [departmentFilterValue, setDepartmentFilterValue] = useState<string>("");
-    const [tagFilterValues, setTagFilterValues] = useState<string[]>([]);
     const [specializationFilterValue, setSpecializationFilterValue] = useState<string>("");
     const [filteredGraph, setFilteredGraph] = useState<any>(graph1);
     const [mainTagFilterValue, setMainTagFilterValue] = useState<string>("");
@@ -27,11 +27,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             );
         }
 
-        if (tagFilterValues.length > 0) {
-            filteredNodes = filteredNodes.filter((node) =>
-                node.tags && node.tags.some((tag) => tagFilterValues.includes(tag))
-            );
-        }
+
 
         if (specializationFilterValue !== "") {
             filteredNodes = filteredNodes.filter(
@@ -55,7 +51,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
 
     useEffect(() => {
         filterNodes();
-      }, [departmentFilterValue, tagFilterValues, specializationFilterValue, mainTagFilterValue]);
+      }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue]);
     
       useEffect(() => {
         return () => {
@@ -72,14 +68,6 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         setMainTagFilterValue(mainTag);
         filterNodes();
         closeDialog();
-    };
-
-    const handleTagCheckboxChange = (tag: string) => {
-        const updatedTags = tagFilterValues.includes(tag)
-            ? tagFilterValues.filter((t) => t !== tag)
-            : [...tagFilterValues, tag];
-
-        setTagFilterValues(updatedTags);
     };
 
     const handleSpecializationDropdownChange = (
@@ -219,6 +207,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                     )}
                 </>
             )}
+            <LegendGraphView/>
         </div>
     );
 }

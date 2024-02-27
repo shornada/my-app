@@ -5,6 +5,7 @@ import GraphView from './components/graph';
 import { SideBar } from './components/navBar';
 import { GlobalStyle } from './global';
 import GridView from './components/gridView';
+import LegendGraphView from './components/graphLegend';
 
 export type CurrentView = 'graph' | 'grid';
 
@@ -24,6 +25,7 @@ function App() {
     <div className="App">
       {/* Pass currentView as a prop to GraphView */}
       <SideBar toggleView={toggleView} />
+
       <GlobalStyle />
       {currentView === 'graph' ? <GraphView currentView={currentView} /> : <GridView />}
     </div>
