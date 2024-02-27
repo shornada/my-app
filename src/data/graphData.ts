@@ -106,12 +106,12 @@ export const graph1 = {
 export const graphLegend = {
     nodes: [
                 //legend
-        { label: "1. semestr", shape: "dot", x: 600, y: -500, physics: false, id: 1001, name: "semestr", title: "semestr", color: firstSemColor, department: 13138, specialization: ["IoT"], fixed: true },
-        { label: "2. semestr", shape: "dot", x: 600, y: -400, physics: false, id: 1002, name: "semestr", title: "semestr", color: secondtSemColor, department: 13138, specialization: ["IoT"], fixed: true },
-        { label: "3. semestr", shape: "dot", x: 600, y: -300, physics: false, id: 1003, name: "semestr", title: "semestr", color: thirdSemColor, department: 13138, specialization: ["IoT"], fixed: true },
-        { label: "4. semestr", shape: "dot", x: 600, y: -200, physics: false, id: 1004, name: "semestr", title: "semestr", color: fourthSemColor, department: 13138, specialization: ["IoT"], fixed: true },
-        { label: "5. semestr", shape: "dot", x: 600, y: -100, physics: false, id: 1005, name: "semestr", title: "semestr", color: fifthSemColor, department: 13138, specialization: ["IoT"], fixed: true },
-        { label: "6. semestr", shape: "dot", x: 600, y: 0, physics: false, id: 1006, name: "semestr", title: "semestr", color: sixthSemColor, department: 13138, specialization: ["IoT"], fixed: true },
+        { label: "1. semestr", shape: "dot", x: 30, y: -500, physics: false, id: 1001,  color: firstSemColor, fixed: true },
+        { label: "2. semestr", shape: "dot", x: 30, y: -400, physics: false, id: 1002,  color: secondtSemColor, fixed: true },
+        { label: "3. semestr", shape: "dot", x: 30, y: -300, physics: false, id: 1003,  color: thirdSemColor, fixed: true },
+        { label: "4. semestr", shape: "dot", x: 30, y: -200, physics: false, id: 1004,  color: fourthSemColor, fixed: true },
+        { label: "5. semestr", shape: "dot", x: 30, y: -100, physics: false, id: 1005,  color: fifthSemColor, fixed: true },
+        { label: "6. semestr", shape: "dot", x: 30, y: 0, physics: false, id: 1006,  color: sixthSemColor, fixed: true },
 
     ],
     edges: [

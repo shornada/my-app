@@ -252,3 +252,29 @@ span.main-tag:hover::after {
   pointer-events: none;
   display: none;
 }
+
+/* graph and legend*/
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.graph-and-legend-container {
+  display: grid;
+  grid-template-columns: 8fr 1fr; /* Ratio*/
+  gap: 10px; /* Adjust as needed */
+}
+
+.graph-wrapper {
+  width: 100%; /* Adjust as needed */
+  height: 100%; /* Adjust as needed */
+  position: relative;
+}
+
+.legend-wrapper {
+  width: 100%; /* Adjust as needed */
+  height: 100%; /* Adjust as needed */
+}
+
+/* Add your other styles as needed */

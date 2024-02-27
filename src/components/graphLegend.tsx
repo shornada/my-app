@@ -22,19 +22,24 @@ function LegendGraphView() {
         edges: {
             color: "#000000",
         },
-        height: "1000px",
+        height: "500px",
         nodes: {
             shape: "circle",
             borderWidth: 4,
             shadow: true,
+            size: 20, 
             font: {
                 size: 15,
             },
-            size: 20, 
         },
-        interaction: {
-            hover: true,
-        },
+
+        interaction:{
+            dragNodes:false,
+            dragView: false,
+            zoomView: false,
+            selectable: false,
+
+          }
     };
     
 

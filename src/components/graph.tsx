@@ -16,7 +16,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
     const [highlightedNodes, setHighlightedNodes] = useState<number[]>([]);
     const [network, setNetwork] = useState<any>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false); // New state
-  
+
 
     const filterNodes = () => {
         let filteredNodes = graph1.nodes;
@@ -26,8 +26,6 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                 (node) => node.department === parseInt(departmentFilterValue, 10)
             );
         }
-
-
 
         if (specializationFilterValue !== "") {
             filteredNodes = filteredNodes.filter(
@@ -51,18 +49,18 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
 
     useEffect(() => {
         filterNodes();
-      }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue]);
-    
-      useEffect(() => {
+    }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue]);
+
+    useEffect(() => {
         return () => {
-          setFilteredGraph(graph1);
+            setFilteredGraph(graph1);
         };
-      }, []);
-    
-      const closeDialog = () => {
+    }, []);
+
+    const closeDialog = () => {
         setSelectedNode(null);
         setIsDialogOpen(false); // Set dialog state to false when closing
-      };
+    };
 
     const handleMainTagClick = (mainTag: string) => {
         setMainTagFilterValue(mainTag);
@@ -115,13 +113,13 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             font: {
                 size: 15,
             },
-            size: 20, 
+            size: 20,
         },
         interaction: {
             hover: true,
         },
     };
-    
+
 
     const handleGetNetwork = (networkInstance: any) => {
         setNetwork(networkInstance);
@@ -130,13 +128,13 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
     const events = {
         click: ({ nodes }: { nodes: any }) => {
             if (isDialogOpen) {
-              const popupElement = document.getElementById('custom-popup');
-              if (popupElement) {
-                popupElement.style.display = 'none';
-              }
+                const popupElement = document.getElementById('custom-popup');
+                if (popupElement) {
+                    popupElement.style.display = 'none';
+                }
             }
             setSelectedNode(nodes.length > 0 ? nodes[0] : null);
-          },
+        },
         hoverNode: ({ event, node }: { event: MouseEvent, node: any }) => {
             if (network) {
                 setHoveredNode(node);
@@ -144,10 +142,10 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                     .filter((edge: any) => edge.from === node || edge.to === node)
                     .map((edge: any) => (edge.from === node ? edge.to : edge.from));
                 setHighlightedNodes([...neighbors, node]);
-    
+
                 const hoveredNode = graph1.nodes.find((n: any) => n.id === node);
                 const popupContent = hoveredNode ? hoveredNode.name : '';
-    
+
                 // Use your custom logic to show/hide the popup
                 const popupElement = document.getElementById('custom-popup');
                 if (popupElement && event) {
@@ -160,11 +158,11 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                 }
             }
         },
-    
+
         blurNode: () => {
             setHoveredNode(null);
             setHighlightedNodes([]);
-    
+
             // Use your custom logic to hide the popup
             const popupElement = document.getElementById('custom-popup');
             if (popupElement) {
@@ -186,28 +184,34 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                 handleSpecializationReset={handleSpecializationReset}
                 handleDepartmentReset={handleDepartmentReset}
             />
+            <div className="graph-and-legend-container">
+                <div className="graph-wrapper">
+                    {currentView === 'graph' && (
+                        <>
+                            {/* Graph component */}
+                            <Graph
+                                graph={filteredGraph}
+                                options={options}
+                                events={events}
+                                getNetwork={handleGetNetwork}
+                            />
 
-            {currentView === 'graph' && (
-                <>
-                    {/* Graph component */}
-                    <Graph
-                        graph={filteredGraph}
-                        options={options}
-                        events={events}
-                        getNetwork={handleGetNetwork}
-                    />
+                            {/* Custom Popup */}
+                            <div id="custom-popup" className="custom-popup" style={{ display: 'none' }} />
 
-                    {/* Custom Popup */}
-                    <div id="custom-popup" className="custom-popup" style={{ display: 'none' }} />
-
-                    {selectedNode && (
-                        <div className="dialog">
-                            <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
-                        </div>
+                            {selectedNode && (
+                                <div className="dialog">
+                                    <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
+                                </div>
+                            )}
+                        </>
                     )}
-                </>
-            )}
-            <LegendGraphView/>
+                </div>
+                <div className="legend-wrapper">
+                    <LegendGraphView />
+                </div>
+            </div>
+
         </div>
     );
 }
