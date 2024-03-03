@@ -22,7 +22,7 @@ function LegendGraphView() {
         edges: {
             color: "#000000",
         },
-        height: "500px",
+        height: "600px",
         nodes: {
             shape: "circle",
             borderWidth: 4,
@@ -51,6 +51,7 @@ function LegendGraphView() {
 
     return (
         <div className="graph-container">
+            <h3>Doporučený semestr</h3>
                     {/* Graph component */}
                     <Graph
                         graph={legendGraph}

@@ -258,6 +258,7 @@ span.main-tag:hover::after {
   display: flex;
   flex-direction: column;
   height: 100%;
+
 }
 
 .graph-and-legend-container {
@@ -270,6 +271,7 @@ span.main-tag:hover::after {
   width: 100%; /* Adjust as needed */
   height: 100%; /* Adjust as needed */
   position: relative;
+  border: 1px solid #ddd;
 }
 
 .legend-wrapper {

@@ -337,11 +337,15 @@ export const dialogData = [
     "MainTag": "Analýza",
     "Tags": "Analýza, Teamwork",
     "Zaměření": {
-      "E": "V",
-      "B": "P"
+      "Enterprise": "Povinný",
+      "Business": "Povinný"
     },
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132406.html"
+    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132406.html",
+    "Obsah": [
+      ["Analýza", 65, 65, 75],
+      ["Teamwork", 100, 20, 5],
+    ]
   },
   {
     "ID": 37,

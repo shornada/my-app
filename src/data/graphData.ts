@@ -2,7 +2,7 @@ const firstSemColor = "#e09c41";
 const secondtSemColor = "#e0df41";
 const thirdSemColor = "#7be041";
 const fourthSemColor = "#41e0c9";
-const fifthSemColor = "#33df41";
+const fifthSemColor = "#1460c9";
 const sixthSemColor = "#cb4041";
 
 const optionalSemColor = "#808080"
@@ -12,18 +12,26 @@ export const graph1 = {
         // 1. semester
         // 1. semester
         // { physics: true,id: 0, name: "SIT", title: "node 1 tooltip text", label: "SIT", color: "#e04141", department: 13101 },
-        { physics: true, id: 1, name: "Základy diskrétní matematiky", mainTag: "Matematika", tags: ["Matematika"], title: "node 1 tooltip text", label: "ZDM", color: firstSemColor, department: 13101, specialization: ["mandatory"] },
-        { physics: true, id: 2, name: "Základy softwarových projektů", mainTag: "Analýza", tags: ["Analýza", "Projektové řízení"], title: "node 2 tooltip text", label: "ZSO", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
-        { physics: true, id: 3, name: "Základy algoritmizace", mainTag: "Programování", tags: ["Algoritmizace", "Programování"], title: "node 3 tooltip text", label: "ZAL", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
-        { physics: true, id: 4, name: "Základy počítačových systémů", mainTag: "Hardware/sítě", tags: ["Hardware"], title: "node 4 tooltip text", label: "ZPS", color: firstSemColor, department: 13138, specialization: ["mandatory"] },
-        { physics: true, id: 5, name: "Základy multimediální tvorby", mainTag: "Multimédia", tags: ["Multimédia"], title: "node 5 tooltip text", label: "ZMT", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
-        { physics: true, id: 6, name: "Základy webových aplikací", mainTag: "Programování", tags: ["Web", "Programování", "Multimédia"], title: "node 5 tooltip text", label: "ZWA", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
+        
+        { fixed: true, x: -50, y: -100, id: 1, name: "Základy diskrétní matematiky", mainTag: "Matematika", tags: ["Matematika"], title: "node 1 tooltip text", label: "ZDM", color: firstSemColor, department: 13101, specialization: ["mandatory"] },
+        { fixed: true, x: 150, y: 0, id: 2, name: "Základy softwarových projektů", mainTag: "Analýza", tags: ["Analýza", "Projektové řízení"], title: "node 2 tooltip text", label: "ZSO", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
+        { fixed: true, x: -50, y: 100, id: 3, name: "Základy algoritmizace", mainTag: "Programování", tags: ["Algoritmizace", "Programování"], title: "node 3 tooltip text", label: "ZAL", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
+        { fixed: true, x: -150, y: 0, id: 4, name: "Základy počítačových systémů", mainTag: "Hardware/sítě", tags: ["Hardware"], title: "node 4 tooltip text", label: "ZPS", color: firstSemColor, department: 13138, specialization: ["mandatory"] },
+        { fixed: true, x: 50, y: -100, id: 5, name: "Základy multimediální tvorby", mainTag: "Multimédia", tags: ["Multimédia"], title: "node 5 tooltip text", label: "ZMT", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
+        { fixed: true, x: 50, y: 100, id: 6, name: "Základy webových aplikací", mainTag: "Programování", tags: ["Web", "Programování", "Multimédia"], title: "node 5 tooltip text", label: "ZWA", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
+      
+        // { id: 1, name: "Základy diskrétní matematiky", mainTag: "Matematika", tags: ["Matematika"], title: "node 1 tooltip text", label: "ZDM", color: firstSemColor, department: 13101, specialization: ["mandatory"] },
+        // { id: 2, name: "Základy softwarových projektů", mainTag: "Analýza", tags: ["Analýza", "Projektové řízení"], title: "node 2 tooltip text", label: "ZSO", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
+        // { id: 3, name: "Základy algoritmizace", mainTag: "Programování", tags: ["Algoritmizace", "Programování"], title: "node 3 tooltip text", label: "ZAL", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
+        // { id: 4, name: "Základy počítačových systémů", mainTag: "Hardware/sítě", tags: ["Hardware"], title: "node 4 tooltip text", label: "ZPS", color: firstSemColor, department: 13138, specialization: ["mandatory"] },
+        // { id: 5, name: "Základy multimediální tvorby", mainTag: "Multimédia", tags: ["Multimédia"], title: "node 5 tooltip text", label: "ZMT", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
+        // { id: 6, name: "Základy webových aplikací", mainTag: "Programování", tags: ["Web", "Programování", "Multimédia"], title: "node 5 tooltip text", label: "ZWA", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
 
         // 2. semester
         { physics: true, id: 7, name: "Lineární algebra", mainTag: "Matematika", tags: ["Matematika"], title: "node 1 tooltip text", label: "LAG", color: secondtSemColor, department: 13101, specialization: ["mandatory"] },
         { physics: true, id: 8, name: "Databázové systémy", mainTag: "Programování", tags: ["Analýza", "Programování", "Databáze"], title: "node 1 tooltip text", label: "DBS", color: secondtSemColor, department: 13136, specialization: ["mandatory"] },
         { physics: true, id: 9, name: "Programování v JAVA", mainTag: "Programování", tags: ["Algoritmizace", "Programování"], title: "node 1 tooltip text", label: "PJV", color: secondtSemColor, department: 13136, specialization: ["mandatory"] },
-        { physics: true, id: 10, name: "Sběr a modelování požadavků", mainTag: "Analýza", tags: ["Analýza", "Teamwork"], title: "node 1 tooltip text", label: "BSMP", color: secondtSemColor, department: 13136, specialization: ["mandatory"] },
+        { physics: true, id: 10, name: "Sběr a modelování požadavků", mainTag: "Analýza", tags: ["Analýza", "Teamwork"], title: "node 1 tooltip text", label: "SMP", color: secondtSemColor, department: 13136, specialization: ["mandatory"] },
         { physics: true, id: 11, name: "Testování softwaru", mainTag: "Programování", tags: ["Testování", "Programování"], title: "node 1 tooltip text", label: "TS1", color: secondtSemColor, department: 13136, specialization: ["mandatory"] },
 
         // 3. semester
@@ -86,11 +94,16 @@ export const graph1 = {
         { from: 0, to: 6 },
 
         { from: 1, to: 7 },
+        { from: 1, to: 16 },
+
 
         { from: 2, to: 10 },
+        { from: 2, to: 17 },
+
         { from: 2, to: 21 },
 
         { from: 3, to: 9 },
+        { from: 3, to: 11 },
         { from: 3, to: 15 },
 
         { from: 6, to: 13, dashes: true },
@@ -100,18 +113,27 @@ export const graph1 = {
 
         { from: 9, to: 14 },
         { from: 9, to: 18 },
+
+        { from: 10, to: 22 },
+
+
+        { from: 14, to: 19 },
+
+        { from: 40, to: 38 },
     ],
 };
 
 export const graphLegend = {
     nodes: [
-                //legend
-        { label: "1. semestr", shape: "dot", x: 30, y: -500, physics: false, id: 1001,  color: firstSemColor, fixed: true },
-        { label: "2. semestr", shape: "dot", x: 30, y: -400, physics: false, id: 1002,  color: secondtSemColor, fixed: true },
-        { label: "3. semestr", shape: "dot", x: 30, y: -300, physics: false, id: 1003,  color: thirdSemColor, fixed: true },
-        { label: "4. semestr", shape: "dot", x: 30, y: -200, physics: false, id: 1004,  color: fourthSemColor, fixed: true },
-        { label: "5. semestr", shape: "dot", x: 30, y: -100, physics: false, id: 1005,  color: fifthSemColor, fixed: true },
-        { label: "6. semestr", shape: "dot", x: 30, y: 0, physics: false, id: 1006,  color: sixthSemColor, fixed: true },
+        //legend
+        { label: "1. semestr", shape: "dot", x: 30, y: -500, physics: false, id: 1001, color: firstSemColor, fixed: true },
+        { label: "2. semestr", shape: "dot", x: 30, y: -400, physics: false, id: 1002, color: secondtSemColor, fixed: true },
+        { label: "3. semestr", shape: "dot", x: 30, y: -300, physics: false, id: 1003, color: thirdSemColor, fixed: true },
+        { label: "4. semestr", shape: "dot", x: 30, y: -200, physics: false, id: 1004, color: fourthSemColor, fixed: true },
+        { label: "5. semestr", shape: "dot", x: 30, y: -100, physics: false, id: 1005, color: fifthSemColor, fixed: true },
+        { label: "6. semestr", shape: "dot", x: 30, y: 0, physics: false, id: 1006, color: sixthSemColor, fixed: true },
+        { label: "Volitelné", shape: "dot", x: 30, y: 100, physics: false, id: 1007, color: optionalSemColor, fixed: true },
+
 
     ],
     edges: [

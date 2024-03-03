@@ -99,8 +99,14 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
     };
 
     const options = {
+        
         layout: {
-            hierarchical: false,
+            hierarchical: {
+                enabled:false,
+                nodeSpacing:1,
+                sortMethod:"directed",
+                treeSpacing:500
+            },
         },
         edges: {
             color: "#000000",
@@ -118,6 +124,25 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         interaction: {
             hover: true,
         },
+        physics: {
+            solver:"forceAtlas2Based",
+
+            wind: { x: 0, y: 0 },
+            forceAtlas2Based:{
+                gravitationalConstant:-100,
+                springLength:30
+            },
+
+            // hierarchicalRepulsion:{
+            //     centralGravity:1.0,
+            //     springLength:50,
+            //     springConstant:2,
+            //     avoidOverlap:1,
+            //    // damping:1,
+            // },
+        },
+  
+
     };
 
 
@@ -150,7 +175,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                 const popupElement = document.getElementById('custom-popup');
                 if (popupElement && event) {
                     // Adjust the offset as needed
-                    const offset = 10;
+                    const offset = -40;
                     popupElement.innerHTML = `<div>${popupContent}</div>`;
                     popupElement.style.left = `${event.pageX + offset}px`;
                     popupElement.style.top = `${event.pageY + offset}px`;
