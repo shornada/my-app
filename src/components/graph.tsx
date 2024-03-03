@@ -16,7 +16,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
     const [highlightedNodes, setHighlightedNodes] = useState<number[]>([]);
     const [network, setNetwork] = useState<any>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false); // New state
-
+    const [searchQuery, setSearchQuery] = useState<string>('');
 
     const filterNodes = () => {
         let filteredNodes = graph1.nodes;
@@ -41,6 +41,11 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             );
         }
 
+        // Apply search query filtering
+        filteredNodes = filteredNodes.filter(
+            (node) => node.label.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
         setFilteredGraph({
             ...graph1,
             nodes: filteredNodes,
@@ -49,7 +54,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
 
     useEffect(() => {
         filterNodes();
-    }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue]);
+    }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue, searchQuery]);
 
     useEffect(() => {
         return () => {
@@ -99,13 +104,12 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
     };
 
     const options = {
-        
         layout: {
             hierarchical: {
-                enabled:false,
-                nodeSpacing:1,
-                sortMethod:"directed",
-                treeSpacing:500
+                enabled: false,
+                nodeSpacing: 1,
+                sortMethod: "directed",
+                treeSpacing: 500
             },
         },
         edges: {
@@ -125,26 +129,17 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             hover: true,
         },
         physics: {
-            solver:"forceAtlas2Based",
+            solver: "forceAtlas2Based",
 
             wind: { x: 0, y: 0 },
-            forceAtlas2Based:{
-                gravitationalConstant:-100,
-                springLength:30
+            forceAtlas2Based: {
+                gravitationalConstant: -100,
+                springLength: 30,
+                theta:0.4,
+                springConstant:0.3
             },
-
-            // hierarchicalRepulsion:{
-            //     centralGravity:1.0,
-            //     springLength:50,
-            //     springConstant:2,
-            //     avoidOverlap:1,
-            //    // damping:1,
-            // },
         },
-  
-
     };
-
 
     const handleGetNetwork = (networkInstance: any) => {
         setNetwork(networkInstance);
@@ -196,8 +191,36 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         },
     };
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+        if ((event.ctrlKey || event.metaKey) && event.key === 'f') {
+            event.preventDefault();
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.focus();
+            }
+        }
+    };
+
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(event.target.value);
+    };
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
     return (
         <div className="graph-container">
+            <input
+                id="search-input"
+                type="text"
+                placeholder="NSS, OMO, ZDM,..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+            />
             <FilterComponent
                 mainTagFilterValue={mainTagFilterValue}
                 specializationFilterValue={specializationFilterValue}
@@ -237,6 +260,14 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                 </div>
             </div>
 
+            {/* Search input */}
+            <input
+                id="search-input"
+                type="text"
+                placeholder="Search node labels..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+            />
         </div>
     );
 }
