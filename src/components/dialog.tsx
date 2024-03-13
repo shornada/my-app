@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { BarChart, Bars, Line } from '@rsuite/charts';
+import { BarChart, Bars, Line, Scatter } from '@rsuite/charts';
 import { dialogData } from '../data/dialogData';
 
 interface DialogProps {
@@ -51,28 +51,15 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
     return ['Invalid Entry', 0];
   });
 
-  const sampleData = [
-    ["1", 3,2,1,1,1, 1],
-    ["2", 3,2,1,1,1, 1],
-    ["3", 1,2, 3],
-    ["4", 5, 2,4],
-    ["5", 3, 2,1],
-    ["6", 1,2, 3],
-    ["7", 3,2, 2],
-    ["8", 4,2, 1],
-    ["9", 1,2, 3],
-    ["10", 3,2, 1],
-    ["11", 4,2, 3],
-    ["12", 2,2, 4],
-    ["13", 3,2, 5],
-    ["14", 9,2, 7],
-  ];
 
-  const formattedSampleData: [string, ...number[]][] = sampleData.map(([label, ...values]) => [
-    String(label),
-    ...values.map(Number),
-  ]);
 
+  const sampleData2 = currentNodeData?.SemesterSchedule || null;
+  const formattedSampleData: [string, ...number[]][] = sampleData2
+    ? sampleData2.map(([label, ...values]: any[]) => [
+        String(label),
+        ...(values.map(Number) as number[]),
+      ])
+    : [];
   const zaměření = currentNodeData.Zaměření;
 
   // Handling the case where "Zaměření" is a string
@@ -110,6 +97,8 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
         <ul className="dialog-list">
           {Object.entries(currentNodeData)
             .filter(([key]) => key !== 'Obsah')
+            .filter(([key]) => key !== 'SemesterSchedule')
+
             .map(([key, value]) => (
               <li key={key}>
                 <strong>{key}:</strong>{' '}
@@ -138,15 +127,14 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
           <Bars name="Rozšiřuje" color="#34C3FF" stack="A" />
         </BarChart>
         <h3>Náročnost předmětu</h3>
-        <BarChart data={formattedSampleData}>
-          <Bars name="Domácí úkol" color = "#34C3FF"stack="A"  />
-          <Bars name="Semestrální projekt" color="#32A4D4" stack="A" />
-          <Bars name="Prezentace" color="#32A4D4" stack="A" />
-          <Bars name="Zápočtový test" color="#32A4D4" stack="A" />
-          <Bars name="Průběžný test" color="#32A4D4" stack="A" />
+        <BarChart data={formattedSampleData} yAxis={true} >
+          <Bars barWidth ="10px" name="Domácí úkol" color = "#33FFAA"stack="A"  />
+          <Bars name="Semestrální projekt" color="#33A1FF" stack="A" />
+          <Bars name="Prezentace" color="#7933FF" stack="A" />
+          <Bars name="Zápočtový test" color="#CA33FF" stack="A" />
+          <Bars name="Průběžný test" color="#FF3375" stack="A" />
 
-
-          <Line name="Průběžná náročnost" color="red"/>
+          <Line name="Průběžná náročnost" color="red" area/>
         </BarChart>
 
         <button onClick={onClose} className="close-button">
