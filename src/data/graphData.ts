@@ -15,9 +15,9 @@ export const graph1 = {
         
         { fixed: true, x: -40, y: -80, id: 1, name: "Základy diskrétní matematiky", mainTag: "Matematika", tags: ["Matematika"], title: "node 1 tooltip text", label: "ZDM", color: firstSemColor, department: 13101, specialization: ["mandatory"] },
         { fixed: true, x: 100, y: 0, id: 2, name: "Základy softwarových projektů", mainTag: "Analýza", tags: ["Analýza", "Projektové řízení"], title: "node 2 tooltip text", label: "ZSO", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
-        { fixed: true, x: -40, y: 80, id: 3, name: "Základy algoritmizace", mainTag: "Programování", tags: ["Algoritmizace", "Programování"], title: "node 3 tooltip text", label: "ZAL", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
+        { fixed: true, x: 40, y: -80, id: 3, name: "Základy algoritmizace", mainTag: "Programování", tags: ["Algoritmizace", "Programování"], title: "node 3 tooltip text", label: "ZAL", color: firstSemColor, department: 13136, specialization: ["mandatory"] },
         { fixed: true, x: -100, y: 0, id: 4, name: "Základy počítačových systémů", mainTag: "Hardware/sítě", tags: ["Hardware"], title: "node 4 tooltip text", label: "ZPS", color: firstSemColor, department: 13138, specialization: ["mandatory"] },
-        { fixed: true, x: 40, y: -80, id: 5, name: "Základy multimediální tvorby", mainTag: "Multimédia", tags: ["Multimédia"], title: "node 5 tooltip text", label: "ZMT", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
+        { fixed: true, x: -40, y: 80, id: 5, name: "Základy multimediální tvorby", mainTag: "Multimédia", tags: ["Multimédia"], title: "node 5 tooltip text", label: "ZMT", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
         { fixed: true, x: 40, y: 80, id: 6, name: "Základy webových aplikací", mainTag: "Programování", tags: ["Web", "Programování", "Multimédia"], title: "node 5 tooltip text", label: "ZWA", color: firstSemColor, department: 13139, specialization: ["mandatory"] },
       
         // { id: 1, name: "Základy diskrétní matematiky", mainTag: "Matematika", tags: ["Matematika"], title: "node 1 tooltip text", label: "ZDM", color: firstSemColor, department: 13101, specialization: ["mandatory"] },
@@ -42,13 +42,13 @@ export const graph1 = {
 
         // 4. semester
         { physics: true, id: 16, name: "Statistika a pravděpodobnost", mainTag: "Matematika", tags: ["Matematika"], title: "node 1 tooltip text", label: "PRA", color: fourthSemColor, department: 13101, specialization: ["mandatory"] },
-        { physics: true, id: 17, name: "Informační systémy", mainTag: "Analýza", tags: ["Analýza", "Teamwork"], title: "node 1 tooltip text", label: "INS", color: fourthSemColor, department: 13116, specialization: ["mandatory"] },
-        { physics: true, id: 18, name: "Datové struktury a algoritmy", mainTag: "Programování", tags: ["Programování", "Algoritmizace"], title: "node 1 tooltip text", label: "DSA", color: fourthSemColor, department: 13136, specialization: ["mandatory"] },
-        { physics: true, id: 19, name: "Návrh softwarových systémů", mainTag: "Programování", tags: ["Architektura", "Programování", "Analýza"], title: "node 1 tooltip text", label: "NSS", color: fourthSemColor, department: 13136, specialization: ["mandatory"] },
+        { physics: true, id: 19, name: "Informační systémy", mainTag: "Analýza", tags: ["Analýza", "Teamwork"], title: "node 1 tooltip text", label: "INS", color: fourthSemColor, department: 13116, specialization: ["mandatory"] },
+        { physics: true, id: 17, name: "Datové struktury a algoritmy", mainTag: "Programování", tags: ["Programování", "Algoritmizace"], title: "node 1 tooltip text", label: "DSA", color: fourthSemColor, department: 13136, specialization: ["mandatory"] },
+        { physics: true, id: 18, name: "Návrh softwarových systémů", mainTag: "Programování", tags: ["Architektura", "Programování", "Analýza"], title: "node 1 tooltip text", label: "NSS", color: fourthSemColor, department: 13136, specialization: ["mandatory"] },
 
         // 5. semester
         { physics: true, id: 20, name: "Kryptografie a síťová bezpečnost", mainTag: "Hardware/sítě", tags: ["Bezpečnost", "Sítě"], title: "node 1 tooltip text", label: "KSB", color: fifthSemColor, department: 13132, specialization: ["mandatory"] },
-        { physics: true, id: 21, name: "Řízení softwarových projektů", mainTag: "Programování", tags: ["Teamwork", "Programování", "Architektura", "Analýza"], title: "node 1 tooltip text", label: "BPM", color: fifthSemColor, department: 13136, specialization: ["mandatory"] },
+        { physics: true, id: 21, name: "Řízení softwarových projektů", mainTag: "Programování", tags: ["Teamwork", "Programování", "Architektura", "Analýza"], title: "node 1 tooltip text", label: "PM2", color: fifthSemColor, department: 13136, specialization: ["mandatory"] },
 
         // 6. semester
         // optional
@@ -96,30 +96,45 @@ export const graph1 = {
         { from: 1, to: 7 },
         { from: 1, to: 16 },
 
+        { from: 2, to: 10 }, //doplněno mnou
 
-        { from: 2, to: 10 },
-        { from: 2, to: 17 },
-
+        { from: 2, to: 19 },
         { from: 2, to: 21 },
+        { from: 2, to: 22 },
+        { from: 2, to: 37 },
+        { from: 2, to: 39 },
+
 
         { from: 3, to: 9 },
         { from: 3, to: 11 },
         { from: 3, to: 15 },
 
-        { from: 6, to: 13, dashes: true },
-        { from: 6, to: 20, dashes: true },
+        { from: 6, to: 13},
+        { from: 6, to: 20},
 
         { from: 7, to: 12 },
 
         { from: 9, to: 14 },
         { from: 9, to: 18 },
 
+        { from: 10, to: 19 },
         { from: 10, to: 22 },
 
 
-        { from: 14, to: 19 },
+        { from: 14, to: 39 },
 
+        { from: 16, to: 37 },
+
+        { from: 18, to: 39 },
+
+        { from: 22, to: 19 },
+        { from: 22, to: 39 },
+
+        { from: 40, to: 19 },
         { from: 40, to: 38 },
+        { from: 40, to: 41 },
+
+
     ],
 };
 

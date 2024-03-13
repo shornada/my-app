@@ -52,20 +52,20 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
   });
 
   const sampleData = [
-    ["1", 3, 1],
-    ["2", 2, 1],
-    ["3", 1, 3],
-    ["4", 5, 4],
-    ["5", 3, 1],
-    ["6", 1, 3],
-    ["7", 3, 2],
-    ["8", 4, 1],
-    ["9", 1, 3],
-    ["10", 3, 1],
-    ["11", 4, 3],
-    ["12", 2, 4],
-    ["13", 3, 5],
-    ["14", 9, 7],
+    ["1", 3,2,1,1,1, 1],
+    ["2", 3,2,1,1,1, 1],
+    ["3", 1,2, 3],
+    ["4", 5, 2,4],
+    ["5", 3, 2,1],
+    ["6", 1,2, 3],
+    ["7", 3,2, 2],
+    ["8", 4,2, 1],
+    ["9", 1,2, 3],
+    ["10", 3,2, 1],
+    ["11", 4,2, 3],
+    ["12", 2,2, 4],
+    ["13", 3,2, 5],
+    ["14", 9,2, 7],
   ];
 
   const formattedSampleData: [string, ...number[]][] = sampleData.map(([label, ...values]) => [
@@ -139,8 +139,14 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
         </BarChart>
         <h3>Náročnost předmětu</h3>
         <BarChart data={formattedSampleData}>
-          <Bars name="Testy/úkoly" barWidth={10} />
-          <Line name="Průběžná náročnost" />
+          <Bars name="Domácí úkol" color = "#34C3FF"stack="A"  />
+          <Bars name="Semestrální projekt" color="#32A4D4" stack="A" />
+          <Bars name="Prezentace" color="#32A4D4" stack="A" />
+          <Bars name="Zápočtový test" color="#32A4D4" stack="A" />
+          <Bars name="Průběžný test" color="#32A4D4" stack="A" />
+
+
+          <Line name="Průběžná náročnost" color="red"/>
         </BarChart>
 
         <button onClick={onClose} className="close-button">

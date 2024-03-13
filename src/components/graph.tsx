@@ -134,9 +134,9 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             wind: { x: 0, y: 0 },
             forceAtlas2Based: {
                 gravitationalConstant: -100,
-                springLength: 30,
+                springLength: 50,
                 theta:0.4,
-                springConstant:0.3
+                springConstant:0.2
             },
         },
     };
