@@ -32,7 +32,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                 (node) =>
                     node.specialization &&
                     (node.specialization.includes(specializationFilterValue) ||
-                        node.specialization.includes("mandatory"))
+                        node.specialization.includes("Společné (povinné)"))
             );
         }
         if (mainTagFilterValue !== "") {
@@ -103,6 +103,13 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         setMainTagFilterValue(mainTag === mainTagFilterValue ? "" : mainTag);
     };
 
+    const handleRestart = () => {
+        handleDepartmentReset();
+        handleSpecializationReset();
+        handleMainTagReset();
+        setSearchQuery("");
+    };
+
     const options = {
         layout: {
             hierarchical: {
@@ -114,9 +121,15 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         },
         edges: {
             color: "#000000",
+            smooth: {
+                type: "straightCross",
+                roundness: 0.5
+            },
+            chosen:false
         },
         height: "1000px",
         nodes: {
+            chosen:false,
             shape: "circle",
             borderWidth: 4,
             shadow: true,
@@ -135,8 +148,8 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             forceAtlas2Based: {
                 gravitationalConstant: -100,
                 springLength: 50,
-                theta:0.4,
-                springConstant:0.2
+                theta: 0.3,
+                springConstant: 0.3
             },
         },
     };
@@ -214,13 +227,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
 
     return (
         <div className="graph-container">
-            <input
-                id="search-input"
-                type="text"
-                placeholder="NSS, OMO, ZDM,..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-            />
+
             <FilterComponent
                 mainTagFilterValue={mainTagFilterValue}
                 specializationFilterValue={specializationFilterValue}
@@ -231,6 +238,11 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                 handleMainTagReset={handleMainTagReset}
                 handleSpecializationReset={handleSpecializationReset}
                 handleDepartmentReset={handleDepartmentReset}
+                handleSearchChange={handleSearchChange}
+                handleRestart={handleRestart}
+                searchQuery={searchQuery} // Pass searchQuery as a prop
+
+
             />
             <div className="graph-and-legend-container">
                 <div className="graph-wrapper">
@@ -260,14 +272,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                 </div>
             </div>
 
-            {/* Search input */}
-            <input
-                id="search-input"
-                type="text"
-                placeholder="Search node labels..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-            />
+
         </div>
     );
 }

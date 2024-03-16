@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { BarChart, Bars, Line, Scatter } from '@rsuite/charts';
 import { dialogData } from '../data/dialogData';
+import { Tooltip, Whisper } from 'rsuite';
 
 interface DialogProps {
   node: number;
@@ -56,9 +57,9 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
   const sampleData2 = currentNodeData?.SemesterSchedule || null;
   const formattedSampleData: [string, ...number[]][] = sampleData2
     ? sampleData2.map(([label, ...values]: any[]) => [
-        String(label),
-        ...(values.map(Number) as number[]),
-      ])
+      String(label),
+      ...(values.map(Number) as number[]),
+    ])
     : [];
   const zaměření = currentNodeData.Zaměření;
 
@@ -70,7 +71,7 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
     if (typeof zaměření === 'object') {
       return (
         <table className="table">
-        <thead>
+          <thead>
             <tr>
               <th>Zaměření</th>
               <th>Role</th>
@@ -122,19 +123,22 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
         </ul>
         <h3>Rozvržení obsahu předmětu</h3>
         <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false}>
-          <Bars name="Aplikuje" color="#2485C1" stack="A" />
-          <Bars name="Doplňuje" color="#32A4D4" stack="A" />
-          <Bars name="Rozšiřuje" color="#34C3FF" stack="A" />
+          <Bars name="Nové znalosti" color="#2485C1" stack="A" />
+          <Bars name="Využití znalostí" color="#32A4D4" stack="A" />
+          <Bars name="Rozšíření znalostí" color="#34C3FF" stack="A" />
         </BarChart>
-        <h3>Náročnost předmětu</h3>
-        <BarChart data={formattedSampleData} yAxis={true} >
-          <Bars barWidth ="10px" name="Domácí úkol" color = "#33FFAA"stack="A"  />
+
+
+          <h3>Náročnost předmětu</h3>
+
+        <BarChart data={formattedSampleData} yAxis={true}>
+          <Bars barWidth="10px" name="Domácí úkol" color="#33FFAA" stack="A" />
           <Bars name="Semestrální projekt" color="#33A1FF" stack="A" />
           <Bars name="Prezentace" color="#7933FF" stack="A" />
           <Bars name="Zápočtový test" color="#CA33FF" stack="A" />
           <Bars name="Průběžný test" color="#FF3375" stack="A" />
 
-          <Line name="Průběžná náročnost" color="red" area/>
+          <Line name="Průběžná náročnost" color="red" area />
         </BarChart>
 
         <button onClick={onClose} className="close-button">

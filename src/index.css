@@ -36,7 +36,7 @@ code {
   padding: 20px;
   border-radius: 8px;
   width: 90%;
-  max-width: 600px;
+  max-width: 700px;
   text-align: left;
   max-height: 400px; /* Set the desired fixed height */
   overflow-y: auto; /* Enable vertical scrolling when content exceeds the fixed height */
@@ -322,3 +322,91 @@ span.main-tag:hover::after {
   text-decoration: underline;
 }
 
+
+/* FilterComponent.css */
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tag-filters,
+.department-filter,
+.specialization-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tag-filters label,
+.department-filter label,
+.specialization-filter label {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.tag-filters input[type="checkbox"] {
+  appearance: none;
+  padding: 4px;
+  margin-right: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tag-filters input[type="checkbox"]:checked {
+  background-color: #007bff;
+  color: #fff;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.search-filter input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-filter input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Optional: Tooltip Styles */
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

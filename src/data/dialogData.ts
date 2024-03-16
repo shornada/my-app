@@ -29,13 +29,17 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129206.html",
     "Obsah": [
-      ["Analýza", 650, 650, 750],
-      ["Matematika", 200, 200, 1000],
-      ["Algoritmizace", 650, 650, 1400],
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
 
-    ]
+    ],
+
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129206.html",
+
   },
   {
     "ID": 2,
@@ -67,13 +71,16 @@ export const dialogData = [
       ["14", 0, 3, 2, 5, 0, 10],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626306.html",
-    "Obsah": [
-      ['Projektové řízení', 60],
-      ['Analýza', 30],
-      ['Týmová práce', 40],
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
 
-    ]
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626306.html",
+
   },
   {
     "ID": 3,
@@ -106,7 +113,15 @@ export const dialogData = [
     ],
 
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626406.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626406.html"
   },
   {
     "ID": 4,
@@ -138,7 +153,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129306.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129306.html"
   },
   {
     "ID": 5,
@@ -170,7 +193,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129006.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129006.html"
   },
   {
     "ID": 6,
@@ -202,7 +233,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129506.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129506.html"
   },
   {
     "ID": 7,
@@ -234,7 +273,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129806.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129806.html"
   },
   {
     "ID": 8,
@@ -266,7 +313,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/50\/10\/p5010606.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/50\/10\/p5010606.html"
   },
   {
     "ID": 9,
@@ -298,7 +353,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/50\/10\/p5010706.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/50\/10\/p5010706.html"
   },
   {
     "ID": 10,
@@ -330,7 +393,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130606.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130606.html"
   },
   {
     "ID": 11,
@@ -362,7 +433,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130006.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130006.html"
   },
   {
     "ID": 12,
@@ -394,7 +473,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130506.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130506.html"
   },
   {
     "ID": 13,
@@ -426,7 +513,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130806.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130806.html"
   },
   {
     "ID": 14,
@@ -458,7 +553,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129906.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/29\/p3129906.html"
   },
   {
     "ID": 15,
@@ -490,7 +593,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626506.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626506.html"
   },
   {
     "ID": 16,
@@ -522,7 +633,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/31\/p6631706.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/31\/p6631706.html"
   },
   {
     "ID": 19,
@@ -554,7 +673,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 5, 0, 5],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130706.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130706.html"
   },
   {
     "ID": 17,
@@ -586,7 +713,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130306.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130306.html"
   },
   {
     "ID": 18,
@@ -618,7 +753,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130106.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/30\/p3130106.html"
   },
   {
     "ID": 20,
@@ -649,7 +792,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/31\/p6631906.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/31\/p6631906.html"
   },
   {
     "ID": 21,
@@ -681,7 +832,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626606.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626606.html"
   },
   {
     "ID": 22,
@@ -716,11 +875,16 @@ export const dialogData = [
       ["14", 0, 3, 2, 0, 0, 5],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132406.html",
-    "Obsah": [
-      ["Analýza", 65, 65, 75],
-      ["Teamwork", 100, 20, 5],
-    ]
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132406.html",
+
   },
   {
     "ID": 37,
@@ -752,7 +916,15 @@ export const dialogData = [
       ["14", 0, 3, 2, 0, 0, 5],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/37\/p6637706.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/37\/p6637706.html"
   },
   {
     "ID": 38,
@@ -784,7 +956,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132006.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132006.html"
   },
   {
     "ID": 40,
@@ -816,7 +996,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/31\/p3131106.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/31\/p3131106.html"
   },
   {
     "ID": 41,
@@ -840,7 +1028,7 @@ export const dialogData = [
       ["6", 0, 3, 0, 0, 0, 3],
       ["7", 0, 3, 0, 0, 0, 3],
       ["8", 0, 3, 0, 0, 0, 3],
-      ["9", 0,3, 0, 0, 0, 3],
+      ["9", 0, 3, 0, 0, 0, 3],
       ["10", 0, 3, 0, 0, 0, 3],
       ["11", 0, 3, 0, 0, 0, 3],
       ["12", 0, 0, 2, 0, 0, 2],
@@ -848,7 +1036,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 5, 0, 5],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/31\/p3131906.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/31\/p3131906.html"
   },
   {
     "ID": 25,
@@ -879,7 +1075,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/55\/95\/p5595006.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/55\/95\/p5595006.html"
   },
   {
     "ID": 47,
@@ -911,7 +1115,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/46\/50\/p4650306.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/46\/50\/p4650306.html"
   },
   {
     "ID": 29,
@@ -942,7 +1154,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/32\/p6632006.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/32\/p6632006.html"
   },
   {
     "ID": 42,
@@ -973,7 +1193,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/31\/p6631806.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/31\/p6631806.html"
   },
   {
     "ID": 43,
@@ -1005,7 +1233,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/31\/p3131606.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/31\/p3131606.html"
   },
   {
     "ID": 47,
@@ -1037,7 +1273,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/33\/p3133306.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/33\/p3133306.html"
   },
   {
     "ID": 48,
@@ -1068,7 +1312,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/32\/p6632106.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/32\/p6632106.html"
   },
   {
     "ID": 45,
@@ -1099,7 +1351,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/46\/66\/p4666506.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/46\/66\/p4666506.html"
   },
   {
     "ID": 23,
@@ -1131,7 +1391,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/58\/33\/p5833906.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/58\/33\/p5833906.html"
   },
   {
     "ID": 39,
@@ -1163,7 +1431,15 @@ export const dialogData = [
       ["14", 0, 3, 2, 0, 0, 5],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/39\/p6639706.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/39\/p6639706.html"
   },
   {
     "ID": 34,
@@ -1195,7 +1471,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132806.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132806.html"
   },
   {
     "ID": 44,
@@ -1226,7 +1510,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/28\/p6628606.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/28\/p6628606.html"
   },
   {
     "ID": 46,
@@ -1258,7 +1550,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/46\/81\/p4681706.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/46\/81\/p4681706.html"
   },
   {
     "ID": 49,
@@ -1290,7 +1590,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/24\/31\/p2431406.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/24\/31\/p2431406.html"
   },
   {
     "ID": 24,
@@ -1322,7 +1630,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132206.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132206.html"
   },
   {
     "ID": 26,
@@ -1354,7 +1670,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132306.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132306.html"
   },
   {
     "ID": 27,
@@ -1386,7 +1710,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626806.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626806.html"
   },
   {
     "ID": 30,
@@ -1418,7 +1750,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132706.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132706.html"
   },
   {
     "ID": 31,
@@ -1450,7 +1790,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/57\/79\/p5779506.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/57\/79\/p5779506.html"
   },
   {
     "ID": 32,
@@ -1482,7 +1830,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626906.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626906.html"
   },
   {
     "ID": 33,
@@ -1513,7 +1869,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "P",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/27\/p6627006.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/27\/p6627006.html"
   },
   {
     "ID": 35,
@@ -1545,7 +1909,15 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132906.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132906.html"
   },
   {
     "ID": 36,
@@ -1577,6 +1949,14 @@ export const dialogData = [
       ["14", 0, 0, 0, 0, 0, 0],
     ],
     "Role P\/V\/PV": "PV",
-    "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132606.html"
+       "Obsah": [
+      ["Analýza", 0, 0, 0],
+      ["Matematika", 0, 0, 0],
+      ["Programování", 0, 0, 0],
+      ["Hardware", 0, 0, 0],
+      ["Multimédia", 0, 0, 0],
+
+    ],
+ "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/31\/32\/p3132606.html"
   }
 ]
