@@ -119,7 +119,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             },
             chosen:false
         },
-        height: "600px",
+        height: "800px",
         nodes: {
             chosen:false,
             shape: "circle",
