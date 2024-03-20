@@ -111,23 +111,15 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
     };
 
     const options = {
-        layout: {
-            hierarchical: {
-                enabled: false,
-                nodeSpacing: 1,
-                sortMethod: "directed",
-                treeSpacing: 500
-            },
-        },
         edges: {
             color: "#000000",
             smooth: {
-                type: "straightCross",
-                roundness: 0.5
+                type: "cubicBezier",
+                roundness: 0.7
             },
             chosen:false
         },
-        height: "1000px",
+        height: "600px",
         nodes: {
             chosen:false,
             shape: "circle",

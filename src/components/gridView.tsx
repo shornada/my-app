@@ -41,7 +41,7 @@ const GridView: React.FC = () => {
               <strong>Katedra:</strong> {item['Katedra']}
             </p>
             <p>
-              <strong>Tags:</strong> {item['Tags']}
+              <strong>Tags:</strong> {item['Podkategorie']}
             </p>
             <p>
               <strong>Zaměření:</strong> 

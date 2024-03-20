@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { BarChart, Bars, Line, Scatter } from '@rsuite/charts';
-import { dialogData } from '../data/dialogData';
-import { Tooltip, Whisper } from 'rsuite';
+import { dialogData, garantsTable } from '../data/dialogData';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 interface DialogProps {
   node: number;
@@ -94,26 +95,39 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
   return (
     <div className="modal" ref={modalRef}>
       <div className="modal-content">
-        <h2>{currentNodeData.Název}</h2>
+
+        <a href={currentNodeData.Odkaz as string} target="_blank" rel="noopener noreferrer">
+          <h2>{currentNodeData.Název}<i className="fas fa-link"></i></h2></a>
         <ul className="dialog-list">
           {Object.entries(currentNodeData)
             .filter(([key]) => key !== 'Obsah')
             .filter(([key]) => key !== 'SemesterSchedule')
+            .filter(([key]) => key !== 'ID')
+            .filter(([key]) => key !== 'Název')
+            .filter(([key]) => key !== 'Odkaz')
+
 
             .map(([key, value]) => (
               <li key={key}>
-                <strong>{key}:</strong>{' '}
-                {key === 'Odkaz' ? (
-                  <a href={value as string} target="_blank" rel="noopener noreferrer">
-                    {value}
-                  </a>
-                ) : key === 'MainTag' ? (
-                  <span className="main-tag" onClick={() => onMainTagClick(currentNodeData.MainTag)}>
-                    {currentNodeData.MainTag}
+
+                {key !== 'Zaměření' && <strong>{key}:</strong>}{' '}
+                {key === 'Kategorie' ? (
+                  <span className="main-tag" onClick={() => onMainTagClick(currentNodeData.Kategorie)}>
+                    {currentNodeData.Kategorie}
                   </span>
                 ) : key === 'Zaměření' ? (
                   <>
                     {zaměřeníString || renderZaměřeníTable(zaměření)}
+                  </>
+                ) :key === 'Kontaktní osoba' ? (
+                  <>
+                    {garantsTable[value as keyof typeof garantsTable] ? (
+                      <a href={garantsTable[value as keyof typeof garantsTable].link} target="_blank" rel="noopener noreferrer">
+                        {value}<i className="fas fa-link"></i>
+                      </a>
+                    ) : (
+                      <span>{value}</span>
+                    )}
                   </>
                 ) : (
                   value
@@ -129,7 +143,7 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
         </BarChart>
 
 
-          <h3>Náročnost předmětu</h3>
+        <h3>Náročnost předmětu</h3>
 
         <BarChart data={formattedSampleData} yAxis={true}>
           <Bars barWidth="10px" name="Domácí úkol" color="#33FFAA" stack="A" />
