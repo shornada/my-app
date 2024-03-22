@@ -47,7 +47,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                 <input
                     id="search-input"
                     type="text"
-                    placeholder="NSS, OMO, ZDM,..."
+                    placeholder="NSS, návrhy, alge,..."
                     value={searchQuery}
                     onChange={handleSearchChange}
                 />

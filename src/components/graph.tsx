@@ -41,9 +41,10 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             );
         }
 
-        // Apply search query filtering
         filteredNodes = filteredNodes.filter(
-            (node) => node.label.toLowerCase().includes(searchQuery.toLowerCase())
+            (node) => 
+                node.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                (node.name && node.name.toLowerCase().includes(searchQuery.toLowerCase()))
         );
 
         setFilteredGraph({
@@ -127,6 +128,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             shadow: true,
             font: {
                 size: 15,
+                face:"monospace"
             },
             size: 20,
         },

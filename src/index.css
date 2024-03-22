@@ -330,7 +330,7 @@ span.main-tag:hover::after {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  width: 100%;
+  width: 80%;
   margin-bottom: 20px;
 }
 

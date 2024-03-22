@@ -76,11 +76,11 @@ export const dialogData = [
     ],
 
     "Obsah": [
-      ["Analýza", 0, 0, 0],
+      ["Analýza", 3, 3, 3],
       ["Matematika", 0, 0, 0],
-      ["Programování", 0, 0, 0],
+      ["Programování", 1, 0, 0],
       ["Hardware", 0, 0, 0],
-      ["Multimédia", 0, 0, 0],
+      ["Multimédia", 0, 2, 0],
 
     ],
     "Odkaz": "https:\/\/intranet.fel.cvut.cz\/cz\/education\/bk\/predmety\/66\/26\/p6626306.html",
@@ -1904,7 +1904,7 @@ export const dialogData = [
     "Kód": "B0B39TVS",
     "Název": "Tvorba virtuálních světů",
     "Katedra": 13139,
-    "Kontaktní osoba": "David Sedláček",
+    "Kontaktní osoba": "Sedláček",
     "Popis stručně": "Tvorba VR světa v Unreal Engine 5. -- tba",
     "Doporučený semestr": 4,
     "Kredity": 4,
@@ -1946,7 +1946,7 @@ export const dialogData = [
     "Kód": "B0B39VAR",
     "Název": "Virtuální a rozšířená realita",
     "Katedra": 13139,
-    "Kontaktní osoba": "David Sedláček",
+    "Kontaktní osoba": "Sedláček",
     "Popis stručně": "Přednášky obsahují nejprve úvod do problemtiky VR a AR a důležitá témata z počítačové grafiky. Následují interakční koncepty používané ve VR, seznámení se s lidským viděním a rozpoznáváním světa a postupy pro sledování pozice a pohybu uživatele. Rozšířené realitě (na mobilu, v brýlých a dalším typům) je věnován dostatečný prostor. Část přednášek se také věnuje deklarativnímu jazyku pro popis VR scén (X3D a X3Dom). Na prakticky zaměřených cvičeních si studenti vytvoří v malých týmech (2-3 studenti) vlastní virtuální svět a vyzkouší si individuálně tvorbu rozšířené reality, 3D skenování a 3D foto-rekonstrukce. Pro cvičení je k dispozici dostatečný počet náhlavních displejů s ovladači pro celou učebnu (Acer Windows Mixed Reality). Doporučeným frameworkem pro tvorbu je herní engine Unity3D, ale zájemci nejsou na něj limitováni.",
     "Doporučený semestr": 5,
     "Kredity": 6,
@@ -2030,7 +2030,7 @@ export const dialogData = [
     "Kód": "B6B39TDM",
     "Název": "3D modelování",
     "Katedra": 13139,
-    "Kontaktní osoba": "David Sedláček",
+    "Kontaktní osoba": "Sedláček",
     "Popis stručně": "Studenti praktickou cestou získají potřebné znalosti pro vytváření geometrie 3D modelů (polygonální, Nurbs a subdividion technika modelování), nastavení materiálů a světel a vytvoření krátkého animovaného filmu. Dále si vyzkouší práci se zařízením pro záznam tvaru objektu (3D laser scanner) a pro záznam pohybu postavy (Motion Capture).",
     "Doporučený semestr": 5,
     "Kredity": 5,
@@ -2080,9 +2080,9 @@ export const garantsTable = {
     name: "Jiří Šebek",
     link: "https://udb.fel.cvut.cz/udb.phtml?_cmd=show&odn=uid=SEBEKJI1,ou=People,o=feld.cvut.cz&_type=user&setlang=cz"
   },
-  "David Sedláček":
+  "Sedláček":
   {
-    name: "David Sedláček",
+    name: "Sedláček",
     link: "https://udb.fel.cvut.cz/udb.phtml?_cmd=show&odn=uid=SEDLAD1,ou=People,o=feld.cvut.cz&_type=user&setlang=cz"
   },
 }
