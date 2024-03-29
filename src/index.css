@@ -410,3 +410,95 @@ button:hover {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.vis-navigation {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.vis-button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.vis-up {
+  top: -50px;
+  left: 0;
+}
+
+.vis-down {
+  top: 50px;
+  left: 0;
+}
+
+.vis-left {
+  top: 0;
+  left: -50px;
+}
+
+.vis-right {
+  top: 0;
+  left: 50px;
+}
+
+.vis-zoomIn {
+  top: 100px;
+}
+
+.vis-zoomOut {
+  top: 150px;
+}
+
+.vis-zoomExtends {
+  top: 200px;
+}
+
+.vis-button:after {
+  font-size: 1.2em;
+  color: gray;
+}
+
+.vis-button:hover:after {
+  color: darkgray;
+}
+
+.vis-button.vis-up:after {
+  content: "▲";
+}
+
+.vis-button.vis-down:after {
+  content: "▼";
+}
+
+.vis-button.vis-left:after {
+  content: "◀";
+}
+
+.vis-button.vis-right:after {
+  content: "▶";
+}
+
+.vis-button.vis-zoomIn:after {
+  content: "+";
+}
+
+.vis-button.vis-zoomOut:after {
+  content: "−";
+}
+
+.vis-button.vis-zoomExtends:after {
+  content: "⤧";
+}

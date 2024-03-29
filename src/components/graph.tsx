@@ -122,7 +122,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
         },
         height: "800px",
         nodes: {
-            chosen:false,
+            chosen:true,
             shape: "circle",
             borderWidth: 4,
             shadow: true,
@@ -133,7 +133,9 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             size: 20,
         },
         interaction: {
+           // multiselect:true,
             hover: true,
+            navigationButtons:true
         },
         physics: {
             solver: "forceAtlas2Based",
