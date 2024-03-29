@@ -6,26 +6,13 @@ import {
 	DiReact,
 } from "react-icons/di";
 
-import {
-	IoNotificationsSharp,
-} from "react-icons/io5";
-
-import {
-	MdSettings
-} from "react-icons/md";
 
 import {
 	BsArrowRight,
 	BsArrowLeft,
 } from "react-icons/bs";
 
-import {
-	RiLogoutCircleRLine
-} from "react-icons/ri";
 
-import logoImg from "../assets/logo.svg";
-
-// ... (other imports)
 
 interface SideBarProps {
     toggleView: (view: 'graph' | 'grid') => void;

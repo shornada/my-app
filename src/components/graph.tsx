@@ -6,7 +6,7 @@ import FilterComponent from "./filters";
 import { CurrentView } from '../App';
 import LegendGraphView from "./graphLegend";
 
-function GraphView({ currentView }: { currentView: CurrentView }) {
+function GraphView() {
     const [selectedNode, setSelectedNode] = useState<any | null>(null);
     const [departmentFilterValue, setDepartmentFilterValue] = useState<string>("");
     const [specializationFilterValue, setSpecializationFilterValue] = useState<string>("");
@@ -242,7 +242,6 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
             />
             <div className="graph-and-legend-container">
                 <div className="graph-wrapper">
-                    {currentView === 'graph' && (
                         <>
                             {/* Graph component */}
                             <Graph
@@ -261,7 +260,7 @@ function GraphView({ currentView }: { currentView: CurrentView }) {
                                 </div>
                             )}
                         </>
-                    )}
+                    )
                 </div>
                 <div className="legend-wrapper">
                     <LegendGraphView />

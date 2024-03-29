@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import './App.css';
 import GraphView from './components/graph';
 import { SideBar } from './components/navBar';
-import { GlobalStyle } from './global';
 import GridView from './components/gridView';
 import LegendGraphView from './components/graphLegend';
 
@@ -23,11 +22,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* Pass currentView as a prop to GraphView */}
-      <SideBar toggleView={toggleView} />
 
-      <GlobalStyle />
-      {currentView === 'graph' ? <GraphView currentView={currentView} /> : <GridView />}
+      <SideBar toggleView={toggleView} />
+      {currentView === 'graph' ? <GraphView  /> : <GridView />}
     </div>
   );
 }
