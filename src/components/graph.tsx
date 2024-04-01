@@ -19,19 +19,36 @@ function GraphView() {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [selectedNodes, setSelectedNodes] = useState<number[]>([]);
 
-    const handleOpenComparismDialog = () => {
-        getSelectedNodes();
+    useEffect(() => {
+        filterNodes();
+    }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue, searchQuery]);
+
+    useEffect(() => {
+        if (network) {
+            const selectedNodes = getSelectedNodes();
+            setSelectedNodes(selectedNodes);
+        }
+    }, [selectedNodes]); // Listen for changes in network instance
+
+    const handleOpenComparisonDialog = () => {
+        const selectedNodes = getSelectedNodes();
+        setSelectedNodes(selectedNodes);
         setIsDialogOpen(true);
     };
 
-    const handleCloseDialog = () => {
+    const handleCloseComparismDialog = () => {
         setIsDialogOpen(false);
+        // if (network) {
+        //     network.unselectAll();
+        // }
     };
 
     const getSelectedNodes = () => {
-        const selectedNodes = network.getSelectedNodes();
-        let updatedSelectedNodes = selectedNodes.slice(0, 3); // Limit to 3 nodes
-        setSelectedNodes(updatedSelectedNodes);
+        if (network) {
+            const selectedNodes = network.getSelectedNodes();
+            return selectedNodes; 
+        }
+        return [];
     };
 
     useEffect(() => {
@@ -79,7 +96,9 @@ function GraphView() {
             nodes: filteredNodes,
         });
     };
-
+    const handleCloseDialog = () => {
+        setIsDialogOpen(false);
+    };
     const handleMainTagClick = (mainTag: string) => {
         setMainTagFilterValue(mainTag);
         filterNodes();
@@ -121,6 +140,10 @@ function GraphView() {
         handleSpecializationReset();
         handleMainTagReset();
         setSearchQuery("");
+        if (network) {
+            network.unselectAll();
+            setIsDialogOpen(false);
+        }
     };
 
     const options = {
@@ -266,12 +289,15 @@ function GraphView() {
                     <LegendGraphView />
                 </div>
             </div>
-            <button onClick={handleOpenComparismDialog}>Open Comparison Dialog</button>
+            <button onClick={handleOpenComparisonDialog}>Open Comparison Dialog</button>
             {isDialogOpen && (
                 <ComparisonDialog
                     nodes={selectedNodes}
-                    onClose={handleCloseDialog}
-                    onMainTagClick={handleMainTagClick}
+                    onClose={handleCloseComparismDialog}
+                    onMainTagClick={(mainTag: string) => {
+                        setMainTagFilterValue(mainTag);
+                        handleCloseComparismDialog();
+                    }}
                 />
             )}
         </div>

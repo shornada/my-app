@@ -526,21 +526,19 @@ button:hover {
 .comparison-dialog-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly; /* Adjust as needed */
+  justify-content: space-evenly;
+  width:100%;
 }
 
 .comparison-dialog {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: calc(33.33% - 20px); /* Adjust width as needed */
+  width: calc(45% ); /* Adjust width as needed */
   margin: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a nice effect */
 }
 
-.comparison-dialog-content {
-  /* Add styles for the content inside the dialog */
-}
 
 .close-button {
   background: #007bff;
