@@ -1,5 +1,14 @@
+
+/* App.css */
 .App {
+  display: flex;
   text-align: center;
+
+}
+
+.main-content {
+  flex: 1;
+  padding-left: 60px; /* Adjust according to the width of the closed sidebar */
 }
 
 .App-logo {

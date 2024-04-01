@@ -348,7 +348,7 @@ span.main-tag:hover::after {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  width: 80%;
+  width: 100%;
   margin-bottom: 20px;
 }
 

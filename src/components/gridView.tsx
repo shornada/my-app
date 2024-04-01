@@ -2,22 +2,7 @@ import React, { useState } from 'react';
 import { dialogData } from '../data/dialogData';
 import Dialog from './dialog'; // Assuming Dialog component is in the same directory
 
-interface DialogItem {
-  ID: number;
-  Kód: string;
-  Název: string;
-  Katedra: number;
-  'Kontaktní osoba'?: string;
-  'Popis stručně': string;
-  'Doporučený semestr': number;
-  Kredity: number;
-  MainTag: string;
-  Tags: string;
-  Zaměření: string;
-  'Role P/V/PV': string;
-  Odkaz: string;
-  Obsah?: (string | number)[][];
-}
+
 
 const GridView: React.FC = () => {
   const [selectedNode, setSelectedNode] = useState<number | null>(null);
