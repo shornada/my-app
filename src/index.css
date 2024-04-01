@@ -520,3 +520,40 @@ button:hover {
 .vis-button.vis-zoomExtends:after {
   content: "⤧";
 }
+
+
+
+.comparison-dialog-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; /* Adjust as needed */
+}
+
+.comparison-dialog {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: calc(33.33% - 20px); /* Adjust width as needed */
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a nice effect */
+}
+
+.comparison-dialog-content {
+  /* Add styles for the content inside the dialog */
+}
+
+.close-button {
+  background: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.close-button:hover {
+  background: #0056b3;
+}

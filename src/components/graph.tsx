@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Graph from "react-graph-vis";
 import { graph1 } from "../data/graphData";
+import ComparisonDialog from "./comparisomDialog";
 import Dialog from "./dialog";
 import FilterComponent from "./filters";
-import { CurrentView } from '../App';
 import LegendGraphView from "./graphLegend";
 
 function GraphView() {
@@ -15,8 +15,34 @@ function GraphView() {
     const [hoveredNode, setHoveredNode] = useState<any | null>(null);
     const [highlightedNodes, setHighlightedNodes] = useState<number[]>([]);
     const [network, setNetwork] = useState<any>(null);
-    const [isDialogOpen, setIsDialogOpen] = useState(false); // New state
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState<string>('');
+    const [selectedNodes, setSelectedNodes] = useState<number[]>([]);
+
+    const handleOpenComparismDialog = () => {
+        getSelectedNodes();
+        setIsDialogOpen(true);
+    };
+
+    const handleCloseDialog = () => {
+        setIsDialogOpen(false);
+    };
+
+    const getSelectedNodes = () => {
+        const selectedNodes = network.getSelectedNodes();
+        let updatedSelectedNodes = selectedNodes.slice(0, 3); // Limit to 3 nodes
+        setSelectedNodes(updatedSelectedNodes);
+    };
+
+    useEffect(() => {
+        filterNodes();
+    }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue, searchQuery]);
+
+    useEffect(() => {
+        return () => {
+            setFilteredGraph(graph1);
+        };
+    }, []);
 
     const filterNodes = () => {
         let filteredNodes = graph1.nodes;
@@ -35,6 +61,7 @@ function GraphView() {
                         node.specialization.includes("Společné (povinné)"))
             );
         }
+
         if (mainTagFilterValue !== "") {
             filteredNodes = filteredNodes.filter(
                 (node) => node.mainTag === mainTagFilterValue
@@ -42,7 +69,7 @@ function GraphView() {
         }
 
         filteredNodes = filteredNodes.filter(
-            (node) => 
+            (node) =>
                 node.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 (node.name && node.name.toLowerCase().includes(searchQuery.toLowerCase()))
         );
@@ -53,25 +80,10 @@ function GraphView() {
         });
     };
 
-    useEffect(() => {
-        filterNodes();
-    }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue, searchQuery]);
-
-    useEffect(() => {
-        return () => {
-            setFilteredGraph(graph1);
-        };
-    }, []);
-
-    const closeDialog = () => {
-        setSelectedNode(null);
-        setIsDialogOpen(false); // Set dialog state to false when closing
-    };
-
     const handleMainTagClick = (mainTag: string) => {
         setMainTagFilterValue(mainTag);
         filterNodes();
-        closeDialog();
+        handleCloseDialog();
     };
 
     const handleSpecializationDropdownChange = (
@@ -118,28 +130,26 @@ function GraphView() {
                 type: "cubicBezier",
                 roundness: 0.7
             },
-            chosen:false
+            chosen: false
         },
         height: "800px",
         nodes: {
-            chosen:true,
             shape: "circle",
             borderWidth: 4,
             shadow: true,
             font: {
                 size: 15,
-                face:"monospace"
+                face: "monospace"
             },
             size: 20,
         },
         interaction: {
-           // multiselect:true,
+            multiselect: true,
             hover: true,
-            navigationButtons:true
+            navigationButtons: true
         },
         physics: {
             solver: "forceAtlas2Based",
-
             wind: { x: 0, y: 0 },
             forceAtlas2Based: {
                 gravitationalConstant: -100,
@@ -155,15 +165,15 @@ function GraphView() {
     };
 
     const events = {
-        click: ({ nodes }: { nodes: any }) => {
-            if (isDialogOpen) {
-                const popupElement = document.getElementById('custom-popup');
-                if (popupElement) {
-                    popupElement.style.display = 'none';
-                }
-            }
-            setSelectedNode(nodes.length > 0 ? nodes[0] : null);
-        },
+        // click: ({ nodes }: { nodes: any }) => {
+        //     if (isDialogOpen) {
+        //         const popupElement = document.getElementById('custom-popup');
+        //         if (popupElement) {
+        //             popupElement.style.display = 'none';
+        //         }
+        //     }
+        //     setSelectedNode(nodes.length > 0 ? nodes[0] : null);
+        // },
         hoverNode: ({ event, node }: { event: MouseEvent, node: any }) => {
             if (network) {
                 setHoveredNode(node);
@@ -175,10 +185,8 @@ function GraphView() {
                 const hoveredNode = graph1.nodes.find((n: any) => n.id === node);
                 const popupContent = hoveredNode ? hoveredNode.name : '';
 
-                // Use your custom logic to show/hide the popup
                 const popupElement = document.getElementById('custom-popup');
                 if (popupElement && event) {
-                    // Adjust the offset as needed
                     const offset = -40;
                     popupElement.innerHTML = `<div>${popupContent}</div>`;
                     popupElement.style.left = `${event.pageX + offset}px`;
@@ -187,12 +195,10 @@ function GraphView() {
                 }
             }
         },
-
         blurNode: () => {
             setHoveredNode(null);
             setHighlightedNodes([]);
 
-            // Use your custom logic to hide the popup
             const popupElement = document.getElementById('custom-popup');
             if (popupElement) {
                 popupElement.style.display = 'none';
@@ -220,10 +226,13 @@ function GraphView() {
             document.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
+    const closeDialog = () => {
+        setSelectedNode(null);
+        setIsDialogOpen(false); // Set dialog state to false when closing
+    };
 
     return (
         <div className="graph-container">
-
             <FilterComponent
                 mainTagFilterValue={mainTagFilterValue}
                 specializationFilterValue={specializationFilterValue}
@@ -236,38 +245,35 @@ function GraphView() {
                 handleDepartmentReset={handleDepartmentReset}
                 handleSearchChange={handleSearchChange}
                 handleRestart={handleRestart}
-                searchQuery={searchQuery} // Pass searchQuery as a prop
-
-
+                searchQuery={searchQuery}
             />
             <div className="graph-and-legend-container">
                 <div className="graph-wrapper">
-                        <>
-                            {/* Graph component */}
-                            <Graph
-                                graph={filteredGraph}
-                                options={options}
-                                events={events}
-                                getNetwork={handleGetNetwork}
-                            />
-
-                            {/* Custom Popup */}
-                            <div id="custom-popup" className="custom-popup" style={{ display: 'none' }} />
-
-                            {selectedNode && (
-                                <div className="dialog">
-                                    <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
-                                </div>
-                            )}
-                        </>
-                    )
+                    <Graph
+                        graph={filteredGraph}
+                        options={options}
+                        events={events}
+                        getNetwork={handleGetNetwork}
+                    />
+                    <div id="custom-popup" className="custom-popup" style={{ display: 'none' }} />
+                    {selectedNode && (
+                        <div className="dialog">
+                            <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
+                        </div>
+                    )}
                 </div>
                 <div className="legend-wrapper">
                     <LegendGraphView />
                 </div>
             </div>
-
-
+            <button onClick={handleOpenComparismDialog}>Open Comparison Dialog</button>
+            {isDialogOpen && (
+                <ComparisonDialog
+                    nodes={selectedNodes}
+                    onClose={handleCloseDialog}
+                    onMainTagClick={handleMainTagClick}
+                />
+            )}
         </div>
     );
 }
