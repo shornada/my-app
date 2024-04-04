@@ -555,3 +555,8 @@ button:hover {
 .close-button:hover {
   background: #0056b3;
 }
+
+
+.fas.fa-question-circle {
+  display: inline-block !important; /* Or your preferred display value */
+}

@@ -1,6 +1,12 @@
 import { useState } from "react";
 
 import { Container, Content, ClosedSideBar, OpenSideBar } from "./styles";
+import '@fortawesome/fontawesome-free/css/all.css';
+import { MdOutlineHelp } from "react-icons/md";
+import { GrNodes } from "react-icons/gr";
+import { IoGridOutline } from "react-icons/io5";
+
+
 
 import {
 	DiReact,
@@ -15,7 +21,7 @@ import {
 
 
 interface SideBarProps {
-    toggleView: (view: 'graph' | 'grid') => void;
+    toggleView: (view: 'graph' | 'grid'|'help') => void;
   }
   
   export function SideBar({ toggleView }: SideBarProps) {
@@ -25,7 +31,7 @@ interface SideBarProps {
       setSideBar(!sideBar);
     };
   
-    const handleViewChange = (view: 'graph' | 'grid') => {
+    const handleViewChange = (view: 'graph' | 'grid'|'help') => {
       toggleView(view);
       setSideBar(false); // Close the sidebar after changing the view
     };
@@ -43,12 +49,17 @@ interface SideBarProps {
                 <ul>
                   <li>
                     <a href="#" title="Graf" onClick={() => handleViewChange('graph')}>
-                      <DiReact />
+                    <GrNodes />
                     </a>
                   </li>
                   <li>
                     <a href="#" title="Dlaždice" onClick={() => handleViewChange('grid')}>
-                      <DiReact />
+                    <IoGridOutline />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" title="Nápověda" onClick={() => handleViewChange('help')}>
+                    <MdOutlineHelp />
                     </a>
                   </li>
                 </ul>
@@ -67,14 +78,20 @@ interface SideBarProps {
                   <ul>
                     <li>
                       <a href="#" title="Graf" onClick={() => handleViewChange('graph')}>
-                        <DiReact />
+                      <GrNodes />
                         <p>Graf</p>
                       </a>
                     </li>
                     <li>
                       <a href="#" title="Dlaždice" onClick={() => handleViewChange('grid')}>
-                        <DiReact />
+                      <IoGridOutline />
                         <p>Dlaždice</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" title="Nápověda" onClick={() => handleViewChange('help')}>
+                      <MdOutlineHelp />
+                       <p>Nápověda</p>
                       </a>
                     </li>
                   </ul>

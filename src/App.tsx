@@ -4,9 +4,10 @@ import './App.css';
 import GraphView from './components/graph';
 import { SideBar } from './components/navBar';
 import GridView from './components/gridView';
+import Help from './components/help';
 
 
-export type CurrentView = 'graph' | 'grid';
+export type CurrentView = 'graph' | 'grid'|'help' ;
 
 function App() {
   const [currentView, setCurrentView] = useState<CurrentView>('graph');
@@ -19,7 +20,7 @@ function App() {
     <div className="App">
       <SideBar toggleView={toggleView} />
       <div className="main-content">
-        {currentView === 'graph' ? <GraphView /> : <GridView />}
+        {currentView === 'graph' ? <GraphView /> : currentView ==='grid' ? <GridView />:<Help/>}
       </div>
     </div>
   );
