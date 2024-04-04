@@ -4,13 +4,6 @@ import { Container, Content, ClosedSideBar, OpenSideBar } from "./styles";
 import '@fortawesome/fontawesome-free/css/all.css';
 import { MdOutlineHelp } from "react-icons/md";
 import { GrNodes } from "react-icons/gr";
-import { IoGridOutline } from "react-icons/io5";
-
-
-
-import {
-	DiReact,
-} from "react-icons/di";
 
 
 import {

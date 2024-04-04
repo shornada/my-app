@@ -164,9 +164,9 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
           <Bars name="Průběžný test" color="#FF3375" stack="A" />
           <Line name="Průběžná náročnost" color="red" area />
         </BarChart>
-        {/* <button onClick={onClose} className="close-button">
+         <button onClick={onClose} className="close-button">
                                 Zavřít
-                            </button> */}
+                            </button> 
       </div>
     </div>
   );

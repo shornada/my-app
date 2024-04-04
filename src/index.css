@@ -47,16 +47,16 @@ body, html, #root {
   justify-content: center;
   pointer-events: none;
 
+
 }
 
 .modal-content {
-  background: #fff;
+  margin-top: 10px;
   padding: 20px;
   border-radius: 8px;
   width: 95%;
-  max-width: 700px;
   text-align: left;
-  max-height: 400px; /* Set the desired fixed height */
+  max-height: 450px; /* Set the desired fixed height */
   overflow-y: auto; /* Enable vertical scrolling when content exceeds the fixed height */
   pointer-events: auto;
 
@@ -532,11 +532,19 @@ button:hover {
 
 .comparison-dialog {
   background: #fff;
-  padding: 20px;
+  padding-right: 10px;
   border-radius: 8px;
   width: calc(45% ); /* Adjust width as needed */
   margin: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a nice effect */
+}
+
+.barchart{
+  margin-left: -18%;
+  margin-right: -33%;
+
+
+  width:120%
 }
 
 
@@ -554,9 +562,4 @@ button:hover {
 
 .close-button:hover {
   background: #0056b3;
-}
-
-
-.fas.fa-question-circle {
-  display: inline-block !important; /* Or your preferred display value */
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { dialogData } from '../data/dialogData';
-import Dialog from './dialog'; // Assuming Dialog component is in the same directory
+
 
 
 

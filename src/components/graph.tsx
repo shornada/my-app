@@ -210,7 +210,7 @@ function GraphView() {
 
                 const popupElement = document.getElementById('custom-popup');
                 if (popupElement && event) {
-                    const offset = -40;
+                    const offset = -100;
                     popupElement.innerHTML = `<div>${popupContent}</div>`;
                     popupElement.style.left = `${event.pageX + offset}px`;
                     popupElement.style.top = `${event.pageY + offset}px`;
