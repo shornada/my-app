@@ -53,7 +53,7 @@ body, html, #root {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: 90%;
+  width: 95%;
   max-width: 700px;
   text-align: left;
   max-height: 400px; /* Set the desired fixed height */
@@ -434,7 +434,7 @@ button:hover {
   top: 100px;
   left: 50px;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: 1;
 }
 
 .vis-button {

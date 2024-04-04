@@ -289,7 +289,7 @@ function GraphView() {
                     <LegendGraphView />
                 </div>
             </div>
-            <button onClick={handleOpenComparisonDialog}>Open Comparison Dialog</button>
+            <button onClick={handleOpenComparisonDialog}>Otevřít detail vybraných předmětů</button>
             {isDialogOpen && (
                 <ComparisonDialog
                     nodes={selectedNodes}
