@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { BarChart, Bars, Line, Scatter } from '@rsuite/charts';
 import { dialogData, garantsTable } from '../data/dialogData';
 import '@fortawesome/fontawesome-free/css/all.css';
+import { departments } from '../data/constantsAndEnums';
 
 
 interface DialogProps {
@@ -94,10 +95,14 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
 
   return (
     <div className="modal" ref={modalRef}>
-      <div className="modal-content">
 
+      <div className="modal-content">
         <a href={currentNodeData.Odkaz as string} target="_blank" rel="noopener noreferrer">
-          <h2>{currentNodeData.Název}<i className="fas fa-link"></i></h2></a>
+          <h2>
+            {currentNodeData.Název}
+            <i className="fas fa-link"></i>
+          </h2>
+        </a>
         <ul className="dialog-list">
           {Object.entries(currentNodeData)
             .filter(([key]) => key !== 'Obsah')
@@ -105,11 +110,8 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
             .filter(([key]) => key !== 'ID')
             .filter(([key]) => key !== 'Název')
             .filter(([key]) => key !== 'Odkaz')
-
-
             .map(([key, value]) => (
               <li key={key}>
-
                 {key !== 'Zaměření' && <strong>{key}:</strong>}{' '}
                 {key === 'Kategorie' ? (
                   <span className="main-tag" onClick={() => onMainTagClick(currentNodeData.Kategorie)}>
@@ -119,11 +121,23 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
                   <>
                     {zaměřeníString || renderZaměřeníTable(zaměření)}
                   </>
-                ) :key === 'Kontaktní osoba' ? (
+                ) : key === 'Kontaktní osoba' ? (
                   <>
                     {garantsTable[value as keyof typeof garantsTable] ? (
                       <a href={garantsTable[value as keyof typeof garantsTable].link} target="_blank" rel="noopener noreferrer">
-                        {value}<i className="fas fa-link"></i>
+                        {value}
+                        <i className="fas fa-link"></i>
+                      </a>
+                    ) : (
+                      <span>{value}</span>
+                    )}
+                  </>
+                ) : key === 'Katedra' ? (
+                  <>
+                    {departments[value as keyof typeof departments] ? (
+                      <a href={departments[value as keyof typeof departments].link} target="_blank" rel="noopener noreferrer">
+                        {value} {departments[value as keyof typeof departments].name}
+                        <i className="fas fa-link"></i>
                       </a>
                     ) : (
                       <span>{value}</span>
@@ -141,23 +155,18 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
           <Bars name="Využití znalostí" color="#32A4D4" stack="A" />
           <Bars name="Rozšíření znalostí" color="#34C3FF" stack="A" />
         </BarChart>
-
-
         <h3>Náročnost předmětu</h3>
-
         <BarChart data={formattedSampleData} yAxis={true}>
           <Bars barWidth="10px" name="Domácí úkol" color="#33FFAA" stack="A" />
           <Bars name="Semestrální projekt" color="#33A1FF" stack="A" />
           <Bars name="Prezentace" color="#7933FF" stack="A" />
           <Bars name="Zápočtový test" color="#CA33FF" stack="A" />
           <Bars name="Průběžný test" color="#FF3375" stack="A" />
-
           <Line name="Průběžná náročnost" color="red" area />
         </BarChart>
-
-        <button onClick={onClose} className="close-button">
-          Zavřít
-        </button>
+        {/* <button onClick={onClose} className="close-button">
+                                Zavřít
+                            </button> */}
       </div>
     </div>
   );

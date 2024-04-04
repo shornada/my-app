@@ -17,6 +17,7 @@ import {
 	BsArrowRight,
 	BsArrowLeft,
 } from "react-icons/bs";
+import { IoGrid } from "react-icons/io5";
 
 
 
@@ -54,7 +55,7 @@ interface SideBarProps {
                   </li>
                   <li>
                     <a href="#" title="Dlaždice" onClick={() => handleViewChange('grid')}>
-                    <IoGridOutline />
+                    <IoGrid />
                     </a>
                   </li>
                   <li>
@@ -84,7 +85,7 @@ interface SideBarProps {
                     </li>
                     <li>
                       <a href="#" title="Dlaždice" onClick={() => handleViewChange('grid')}>
-                      <IoGridOutline />
+                      <IoGrid />
                         <p>Dlaždice</p>
                       </a>
                     </li>

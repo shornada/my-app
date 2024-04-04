@@ -27,9 +27,9 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                 const sampleData2 = currentNodeData?.SemesterSchedule || null;
                 const formattedSampleData: [string, ...number[]][] = sampleData2
                     ? sampleData2.map(([label, ...values]: any[]) => [
-                          String(label),
-                          ...(values.map(Number) as number[]),
-                      ])
+                        String(label),
+                        ...(values.map(Number) as number[]),
+                    ])
                     : [];
 
                 const zaměření = currentNodeData.Zaměření;
@@ -62,13 +62,13 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                 return (
                     <div key={index} className="comparison-dialog">
                         <a href={currentNodeData.Odkaz as string} target="_blank" rel="noopener noreferrer">
-                                <h2>
-                                    {currentNodeData.Název}
-                                    <i className="fas fa-link"></i>
-                                </h2>
-                            </a>
+                            <h2>
+                                {currentNodeData.Název}
+                                <i className="fas fa-link"></i>
+                            </h2>
+                        </a>
                         <div className="modal-content">
-                            
+
                             <ul className="dialog-list">
                                 {Object.entries(currentNodeData)
                                     .filter(([key]) => key !== 'Obsah')
@@ -98,21 +98,21 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                                                         <span>{value}</span>
                                                     )}
                                                 </>
-                                            )  : key === 'Katedra' ? ( 
-                                            <>
-                                                {departments[value as keyof typeof departments] ? (
-                                                    <a href={departments[value as keyof typeof departments].link} target="_blank" rel="noopener noreferrer">
-                                                        {value} {departments[value as keyof typeof departments].name}
-                                                        <i className="fas fa-link"></i>
-                                                    </a>
-                                                ) : (
-                                                    <span>{value}</span>
-                                                )}
-                                            </>
-                                        ) : (
-                                            value
-                                        )}
-                                    </li>
+                                            ) : key === 'Katedra' ? (
+                                                <>
+                                                    {departments[value as keyof typeof departments] ? (
+                                                        <a href={departments[value as keyof typeof departments].link} target="_blank" rel="noopener noreferrer">
+                                                            {value} {departments[value as keyof typeof departments].name}
+                                                            <i className="fas fa-link"></i>
+                                                        </a>
+                                                    ) : (
+                                                        <span>{value}</span>
+                                                    )}
+                                                </>
+                                            ) : (
+                                                value
+                                            )}
+                                        </li>
                                     ))}
                             </ul>
                             <h3>Rozvržení obsahu předmětu</h3>
