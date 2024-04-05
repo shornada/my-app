@@ -133,9 +133,6 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                                 <Bars name="Průběžný test" color="#FF3375" stack="A" />
                                 <Line name="Průběžná náročnost" color="red" area />
                             </BarChart>
-                            {/* <button onClick={onClose} className="close-button">
-                                Zavřít
-                            </button> */}
                         </div>
                     </div>
                 );

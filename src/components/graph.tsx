@@ -24,9 +24,12 @@ function GraphView() {
     }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue, searchQuery]);
 
     useEffect(() => {
-        if (network) {
+        if (selectedNodes) {
             const selectedNodes = getSelectedNodes();
             setSelectedNodes(selectedNodes);
+            setIsDialogOpen(true);
+
+
         }
     }, [selectedNodes]); // Listen for changes in network instance
 
@@ -299,7 +302,7 @@ function GraphView() {
                         handleCloseComparismDialog();
                     }}
                 />
-            {/* )} */}
+             {/* )}  */}
         </div>
     );
 }
