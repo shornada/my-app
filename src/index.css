@@ -567,3 +567,7 @@ button:hover {
 .close-button:hover {
   background: #0056b3;
 }
+a.selected {
+  background-color: #007bff;
+  color: #fff;
+}
