@@ -149,12 +149,16 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
               </li>
             ))}
         </ul>
+
         <h3>Rozvržení obsahu předmětu</h3>
+        <div className="barchart">
+
         <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false}>
           <Bars name="Nové znalosti" color="#2485C1" stack="A" />
           <Bars name="Využití znalostí" color="#32A4D4" stack="A" />
           <Bars name="Rozšíření znalostí" color="#34C3FF" stack="A" />
         </BarChart>
+        </div>
         <h3>Náročnost předmětu</h3>
         <BarChart data={formattedSampleData} yAxis={true}>
           <Bars barWidth="10px" name="Domácí úkol" color="#33FFAA" stack="A" />

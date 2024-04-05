@@ -36,6 +36,7 @@ body, html, #root {
 /* Dialog.css */
 
 .modal {
+  
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -52,6 +53,8 @@ body, html, #root {
 
 .modal-content {
   margin-top: 10px;
+  background-color: #fff;
+  max-width: 650px;
   padding: 20px;
   border-radius: 8px;
   width: 95%;
@@ -534,14 +537,15 @@ button:hover {
   background: #fff;
   padding-right: 10px;
   border-radius: 8px;
+  max-width: 650px;
   width: calc(45% ); /* Adjust width as needed */
   margin: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a nice effect */
 }
 
 .barchart{
-  margin-left: -18%;
-  margin-right: -33%;
+  margin-left: -17%;
+  margin-right: -30%;
 
 
   width:120%

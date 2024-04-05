@@ -117,11 +117,11 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                             </ul>
                             <h3>Rozvržení obsahu předmětu</h3>
                             <div className="barchart">
-                                <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false}>
-                                    <Bars name="Nové znalosti" color="#2485C1" stack="A" />
-                                    <Bars name="Využití znalostí" color="#32A4D4" stack="A" />
-                                    <Bars name="Rozšíření znalostí" color="#34C3FF" stack="A" />
-                                </BarChart>
+                            <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false}>
+                                <Bars name="Nové znalosti" color="#2485C1" stack="A" />
+                                <Bars name="Využití znalostí" color="#32A4D4" stack="A" />
+                                <Bars name="Rozšíření znalostí" color="#34C3FF" stack="A" />
+                            </BarChart>
                             </div>
 
                             <h3>Náročnost předmětu</h3>
@@ -140,9 +140,9 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                     </div>
                 );
             })}
-            <button className="close-button" onClick={onClose}>
+            {/* <button className="close-button" onClick={onClose}>
                 Zavřít
-            </button>
+            </button> */}
         </div>
     );
 };
