@@ -24,14 +24,33 @@ function GraphView() {
     }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue, searchQuery]);
 
     useEffect(() => {
-        if (selectedNodes) {
+        const selectedNodes = getSelectedNodes();
+        setSelectedNodes(selectedNodes);
+    }, []);
+
+    const unselectALL = () => {
+        setSelectedNodes([])
+        network.unselectAll()
+    };
+
+    useEffect(() => {
+        if (!network) return;
+
+        const handleSelectionChange = () => {
             const selectedNodes = getSelectedNodes();
             setSelectedNodes(selectedNodes);
-            setIsDialogOpen(true);
+        };
 
 
-        }
-    }, [selectedNodes]); // Listen for changes in network instance
+        network.on("selectNode", handleSelectionChange);
+        network.on("deselectNode", handleSelectionChange);
+
+
+        return () => {
+            network.off("selectNode", handleSelectionChange);
+            network.off("deselectNode", handleSelectionChange);
+        };
+    }, [network]);
 
     const handleOpenComparisonDialog = () => {
         const selectedNodes = getSelectedNodes();
@@ -46,17 +65,14 @@ function GraphView() {
         // }
     };
 
+
     const getSelectedNodes = () => {
         if (network) {
-            const selectedNodes = network.getSelectedNodes();
-            return selectedNodes; 
+            return network.getSelectedNodes();
         }
         return [];
     };
 
-    useEffect(() => {
-        filterNodes();
-    }, [departmentFilterValue, specializationFilterValue, mainTagFilterValue, searchQuery]);
 
     useEffect(() => {
         return () => {
@@ -143,10 +159,7 @@ function GraphView() {
         handleSpecializationReset();
         handleMainTagReset();
         setSearchQuery("");
-        if (network) {
-            network.unselectAll();
-            setIsDialogOpen(false);
-        }
+        unselectALL()
     };
 
     const options = {
@@ -294,15 +307,15 @@ function GraphView() {
             </div>
             {/* <button onClick={handleOpenComparisonDialog}>Otevřít detail vybraných předmětů</button>
             {isDialogOpen && ( */}
-                <ComparisonDialog
-                    nodes={selectedNodes}
-                    onClose={handleCloseComparismDialog}
-                    onMainTagClick={(mainTag: string) => {
-                        setMainTagFilterValue(mainTag);
-                        handleCloseComparismDialog();
-                    }}
-                />
-             {/* )}  */}
+            <ComparisonDialog
+                nodes={selectedNodes}
+                onClose={handleCloseComparismDialog}
+                onMainTagClick={(mainTag: string) => {
+                    setMainTagFilterValue(mainTag);
+                    handleCloseComparismDialog();
+                }}
+            />
+            {/* )}  */}
         </div>
     );
 }
