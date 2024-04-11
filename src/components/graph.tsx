@@ -185,7 +185,8 @@ function GraphView() {
         interaction: {
             multiselect: true,
             hover: true,
-            navigationButtons: true
+            navigationButtons: true,
+            zoomView:false
         },
         physics: {
             solver: "forceAtlas2Based",
