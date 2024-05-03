@@ -37,8 +37,16 @@ const Help: React.FC<HelpProps> = ({ isOpen, onClose }) => {
             {isOpen && (
                 <div ref={modalRef} className="modal">
                     <div className='modal-content'>
-                        <h2>Help</h2>
-                        <p>This is the help content.</p>
+                        <h2>Nápověda</h2>
+                        <ul>
+                            <li>Tato aplikace slouží studentům studijního programu SIT k získání informací o předmětech v rámci studia.</li>
+                            <li>Hlavním prvkem je graf předmětů, kde je znázorněna logická návaznost předmětů tohoto studijního programu.</li>
+                            <li>Aplikace také umožňuje v grafu zvolit jeden nebo více předmětů, jejichž detail se zobrazí pod grafem.
+                                <ul>
+                                    <li>V detailu se nacházejí základní informace o předmětu, jeho obsah a také předpokládané rozložení náročnosti během semestru.</li>
+                                </ul>
+                            </li>
+                        </ul>
                         <button onClick={onClose} className="close-button">Zavřít</button>
                     </div>
                 </div>
