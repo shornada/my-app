@@ -571,3 +571,12 @@ a.selected {
   background-color: #007bff;
   color: #fff;
 }
+.helpUl {
+  padding-left: 30px; /* Add some left padding for indentation */
+}
+
+.helpLi {
+  list-style-type: disc; /* Use bulletpoints */
+
+  margin-bottom: 8px; /* Adjust margin as needed */
+}
