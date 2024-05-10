@@ -1,4 +1,4 @@
-#Datová reprezentace studijních plánů a získaných znalostí
+# Datová reprezentace studijních plánů a získaných znalostí
 Tato aplikace slouží studentům studijního programu SIT k získání informací o předmětech v rámci studia.
 
 lavním prvkem je graf předmětů, kde je znázorněna logická návaznost předmětů tohoto studijního programu.
