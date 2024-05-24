@@ -1,10 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 interface HelpProps {
-    isOpen: boolean;
-    onClose: () => void;
+    isOpen: boolean; // Flag indicating whether the help modal is open or closed
+    onClose: () => void; // Function to close the help modal
 }
 
+/**
+ * Component representing a help modal.
+ * @param isOpen - Flag indicating whether the help modal is open or closed.
+ * @param onClose - Function to close the help modal.
+ */
 const Help: React.FC<HelpProps> = ({ isOpen, onClose }) => {
     const modalRef = useRef<HTMLDivElement>(null);
     const [closeOnOutsideClick, setCloseOnOutsideClick] = useState(true);
@@ -27,10 +32,6 @@ const Help: React.FC<HelpProps> = ({ isOpen, onClose }) => {
         };
     }, [isOpen, onClose, closeOnOutsideClick]);
 
-    const handleHelpButtonClick = () => {
-        onClose();
-        setCloseOnOutsideClick(false);
-    };
 
     return (
         <div className={isOpen ? "modal-overlay open" : "modal-overlay"}>

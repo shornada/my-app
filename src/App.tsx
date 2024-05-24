@@ -7,18 +7,25 @@ import Help from './components/help'; // Import the Help component
 
 export type CurrentView = 'graph' | 'grid' | 'help';
 
+/**
+ * Main component representing the application.
+ */
 function App() {
   const [currentView, setCurrentView] = useState<CurrentView>('graph');
   const [isHelpModalOpen, setIsHelpModalOpen] = useState<boolean>(true); // Set to true to open Help dialog by default
 
-  useEffect(() => {
-    // Additional logic or side effects can be added here
-  }, []);
 
+  /**
+   * Toggles between different views (graph, grid, help).
+   * @param view - The view to be set ('graph', 'grid', 'help').
+   */
   const toggleView = (view: CurrentView) => {
     setCurrentView(view);
   };
 
+  /**
+   * Closes the Help modal.
+   */
   const closeHelpModal = () => {
     setIsHelpModalOpen(false);
   };

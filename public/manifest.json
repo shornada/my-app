@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Průchod studiem SIT",
+  "name": "Vizualizace průchodu studiem studijního programu SIT na FEL ČVUT",
   "icons": [
     {
       "src": "favicon.ico",

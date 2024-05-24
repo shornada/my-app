@@ -3,19 +3,33 @@ import { BarChart, Bars, Line } from '@rsuite/charts';
 import { dialogData, garantsTable } from '../data/dialogData';
 import { departments } from '../data/constantsAndEnums';
 
+/**
+ * Component that displays more course details for multiple nodes.
+ * @param {ComparisonDialogProps} props - The properties passed to the component.
+ * @param {number[]} props.nodes - An array of node IDs to display.
+ * @param {function} props.onClose - Callback function to close the dialog.
+ * @param {function} props.onMainTagClick - Callback function to handle clicks on the main tag.
+ * @returns {JSX.Element} The rendered ComparisonDialog component.
+ */
 interface ComparisonDialogProps {
     nodes: number[];
     onClose: () => void;
     onMainTagClick: (mainTag: string) => void;
 }
 
-const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onMainTagClick }) => {
+/**
+ * ComparisonDialog component that displays detailed information about multiple courses.
+ * @param {ComparisonDialogProps} props - The properties passed to the component.
+ * @returns {JSX.Element} The rendered ComparisonDialog component.
+ */
+const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onMainTagClick }) => {
     return (
         <div className="comparison-dialog-container">
             {nodes.map((nodeId, index) => {
                 const currentNodeData = dialogData.find((item) => item.ID === nodeId);
                 if (!currentNodeData) return null;
 
+                // Format the "Obsah" data for the bar chart
                 const obsahData = currentNodeData.Obsah || [];
                 const formattedObsahData: [string, ...number[]][] = obsahData.map((entry) => {
                     if (Array.isArray(entry) && entry.length >= 2 && typeof entry[0] === 'string') {
@@ -24,6 +38,7 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                     return ['Invalid Entry', 0];
                 });
 
+                // Format the "SemesterSchedule" data for the bar chart
                 const sampleData2 = currentNodeData?.SemesterSchedule || null;
                 const formattedSampleData: [string, ...number[]][] = sampleData2
                     ? sampleData2.map(([label, ...values]: any[]) => [
@@ -35,6 +50,7 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                 const zaměření = currentNodeData.Zaměření;
                 const zaměřeníString = typeof zaměření === 'string' ? zaměření : '';
 
+                // Function to render "Zaměření" table if it is an object
                 const renderZaměřeníTable = (zaměření: any) => {
                     if (typeof zaměření === 'object') {
                         return (
@@ -71,11 +87,7 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
 
                             <ul className="dialog-list">
                                 {Object.entries(currentNodeData)
-                                    .filter(([key]) => key !== 'Obsah')
-                                    .filter(([key]) => key !== 'SemesterSchedule')
-                                    .filter(([key]) => key !== 'ID')
-                                    .filter(([key]) => key !== 'Název')
-                                    .filter(([key]) => key !== 'Odkaz')
+                                    .filter(([key]) => key !== 'Obsah' && key !== 'SemesterSchedule' && key !== 'ID' && key !== 'Název' && key !== 'Odkaz')
                                     .map(([key, value]) => (
                                         <li key={key}>
                                             {key !== 'Zaměření' && <strong>{key}:</strong>}{' '}
@@ -117,11 +129,11 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                             </ul>
                             <h3>Rozvržení obsahu předmětu</h3>
                             <div className="barchart">
-                            <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false}>
-                                <Bars name="Nové znalosti" color="#2485C1" stack="A" />
-                                <Bars name="Využití znalostí" color="#32A4D4" stack="A" />
-                                <Bars name="Rozšíření znalostí" color="#34C3FF" stack="A" />
-                            </BarChart>
+                                <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false}>
+                                    <Bars name="Nové znalosti" color="#2485C1" stack="A" />
+                                    <Bars name="Využití znalostí" color="#32A4D4" stack="A" />
+                                    <Bars name="Rozšíření znalostí" color="#34C3FF" stack="A" />
+                                </BarChart>
                             </div>
 
                             <h3>Náročnost předmětu</h3>
@@ -137,9 +149,6 @@ const ComparisonDialog: React.FC<ComparisonDialogProps> = ({ nodes, onClose, onM
                     </div>
                 );
             })}
-            {/* <button className="close-button" onClick={onClose}>
-                Zavřít
-            </button> */}
         </div>
     );
 };

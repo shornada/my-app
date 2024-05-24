@@ -6,6 +6,10 @@ import Dialog from "./dialog";
 import FilterComponent from "./filters";
 import LegendGraphView from "./graphLegend";
 
+/**
+ * GraphView component for displaying and interacting with a graph visualization.
+ * @returns {JSX.Element} The rendered GraphView component.
+ */
 function GraphView() {
     const [selectedNode, setSelectedNode] = useState<any | null>(null);
     const [departmentFilterValue, setDepartmentFilterValue] = useState<string>("");
@@ -28,23 +32,27 @@ function GraphView() {
         setSelectedNodes(selectedNodes);
     }, []);
 
+    /**
+     * Unselects all nodes in the graph.
+     */
     const unselectALL = () => {
-        setSelectedNodes([])
-        network.unselectAll()
+        setSelectedNodes([]);
+        network.unselectAll();
     };
 
     useEffect(() => {
         if (!network) return;
 
+        /**
+         * Handles changes in the selection of nodes.
+         */
         const handleSelectionChange = () => {
             const selectedNodes = getSelectedNodes();
             setSelectedNodes(selectedNodes);
         };
 
-
         network.on("selectNode", handleSelectionChange);
         network.on("deselectNode", handleSelectionChange);
-
 
         return () => {
             network.off("selectNode", handleSelectionChange);
@@ -52,20 +60,17 @@ function GraphView() {
         };
     }, [network]);
 
-    const handleOpenComparisonDialog = () => {
-        const selectedNodes = getSelectedNodes();
-        setSelectedNodes(selectedNodes);
-        setIsDialogOpen(true);
-    };
-
+    /**
+     * Closes the comparison dialog.
+     */
     const handleCloseComparismDialog = () => {
         setIsDialogOpen(false);
-        // if (network) {
-        //     network.unselectAll();
-        // }
     };
 
-
+    /**
+     * Gets the currently selected nodes in the network.
+     * @returns {number[]} The IDs of the selected nodes.
+     */
     const getSelectedNodes = () => {
         if (network) {
             return network.getSelectedNodes();
@@ -73,13 +78,15 @@ function GraphView() {
         return [];
     };
 
-
     useEffect(() => {
         return () => {
             setFilteredGraph(graph1);
         };
     }, []);
 
+    /**
+     * Filters the nodes in the graph based on the selected filter values.
+     */
     const filterNodes = () => {
         let filteredNodes = graph1.nodes;
 
@@ -115,15 +122,28 @@ function GraphView() {
             nodes: filteredNodes,
         });
     };
+
+    /**
+     * Closes the dialog.
+     */
     const handleCloseDialog = () => {
         setIsDialogOpen(false);
     };
+
+    /**
+     * Handles the click on a main tag to filter the nodes.
+     * @param {string} mainTag - The main tag to filter by.
+     */
     const handleMainTagClick = (mainTag: string) => {
         setMainTagFilterValue(mainTag);
         filterNodes();
         handleCloseDialog();
     };
 
+    /**
+     * Handles the change in the specialization dropdown.
+     * @param {React.ChangeEvent<HTMLSelectElement>} event - The change event.
+     */
     const handleSpecializationDropdownChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
@@ -131,10 +151,17 @@ function GraphView() {
         setSpecializationFilterValue(value);
     };
 
+    /**
+     * Resets the specialization filter.
+     */
     const handleSpecializationReset = () => {
         setSpecializationFilterValue("");
     };
 
+    /**
+     * Handles the change in the department dropdown.
+     * @param {React.ChangeEvent<HTMLSelectElement>} event - The change event.
+     */
     const handleDropdownChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
@@ -142,26 +169,40 @@ function GraphView() {
         setDepartmentFilterValue(value);
     };
 
+    /**
+     * Resets the department filter.
+     */
     const handleDepartmentReset = () => {
         setDepartmentFilterValue("");
     };
 
+    /**
+     * Resets the main tag filter.
+     */
     const handleMainTagReset = () => {
         setMainTagFilterValue("");
     };
 
+    /**
+     * Handles the change in the main tag checkbox.
+     * @param {string} mainTag - The main tag to filter by.
+     */
     const handleMainTagCheckboxChange = (mainTag: string) => {
         setMainTagFilterValue(mainTag === mainTagFilterValue ? "" : mainTag);
     };
 
+    /**
+     * Handles the restart action to reset all filters and selections.
+     */
     const handleRestart = () => {
         handleDepartmentReset();
         handleSpecializationReset();
         handleMainTagReset();
         setSearchQuery("");
-        unselectALL()
+        unselectALL();
     };
 
+    // Options for the graph
     const options = {
         edges: {
             color: "#000000",
@@ -186,7 +227,7 @@ function GraphView() {
             multiselect: true,
             hover: true,
             navigationButtons: true,
-            zoomView:false
+            zoomView: false
         },
         physics: {
             solver: "forceAtlas2Based",
@@ -200,20 +241,15 @@ function GraphView() {
         },
     };
 
+    /**
+     * Sets the network instance.
+     * @param {any} networkInstance - The network instance.
+     */
     const handleGetNetwork = (networkInstance: any) => {
         setNetwork(networkInstance);
     };
 
     const events = {
-        // click: ({ nodes }: { nodes: any }) => {
-        //     if (isDialogOpen) {
-        //         const popupElement = document.getElementById('custom-popup');
-        //         if (popupElement) {
-        //             popupElement.style.display = 'none';
-        //         }
-        //     }
-        //     setSelectedNode(nodes.length > 0 ? nodes[0] : null);
-        // },
         hoverNode: ({ event, node }: { event: MouseEvent, node: any }) => {
             if (network) {
                 setHoveredNode(node);
@@ -246,6 +282,10 @@ function GraphView() {
         },
     };
 
+    /**
+     * Handles the key down event for focusing on the search input.
+     * @param {KeyboardEvent} event - The keyboard event.
+     */
     const handleKeyDown = (event: KeyboardEvent) => {
         if ((event.ctrlKey || event.metaKey) && event.key === 'f') {
             event.preventDefault();
@@ -256,69 +296,78 @@ function GraphView() {
         }
     };
 
+    /**
+     * Handles the change in the search input.
+     * @param {React.ChangeEvent<HTMLInputElement>} event - The change event.
+     */
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(event.target.value);
     };
 
-    useEffect(() => {
-        document.addEventListener('keydown', handleKeyDown);
-        return () => {
-            document.removeEventListener('keydown', handleKeyDown);
+    /**
+     * Adds event listener for focusing on search input.
+     */
+        useEffect(() => {
+            document.addEventListener('keydown', handleKeyDown);
+            return () => {
+                document.removeEventListener('keydown', handleKeyDown);
+            };
+        }, []);
+    
+        /**
+         * Closes the dialog and resets selected node.
+         */
+        const closeDialog = () => {
+            setSelectedNode(null);
+            setIsDialogOpen(false);
         };
-    }, []);
-    const closeDialog = () => {
-        setSelectedNode(null);
-        setIsDialogOpen(false); // Set dialog state to false when closing
-    };
-
-    return (
-        <div className="graph-container">
-            <FilterComponent
-                mainTagFilterValue={mainTagFilterValue}
-                specializationFilterValue={specializationFilterValue}
-                departmentFilterValue={departmentFilterValue}
-                handleMainTagCheckboxChange={handleMainTagCheckboxChange}
-                handleSpecializationDropdownChange={handleSpecializationDropdownChange}
-                handleDropdownChange={handleDropdownChange}
-                handleMainTagReset={handleMainTagReset}
-                handleSpecializationReset={handleSpecializationReset}
-                handleDepartmentReset={handleDepartmentReset}
-                handleSearchChange={handleSearchChange}
-                handleRestart={handleRestart}
-                searchQuery={searchQuery}
-            />
-            <div className="graph-and-legend-container">
-                <div className="graph-wrapper">
-                    <Graph
-                        graph={filteredGraph}
-                        options={options}
-                        events={events}
-                        getNetwork={handleGetNetwork}
-                    />
-                    <div id="custom-popup" className="custom-popup" style={{ display: 'none' }} />
-                    {selectedNode && (
-                        <div className="dialog">
-                            <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
-                        </div>
-                    )}
+    
+        return (
+            <div className="graph-container">
+                <FilterComponent
+                    mainTagFilterValue={mainTagFilterValue}
+                    specializationFilterValue={specializationFilterValue}
+                    departmentFilterValue={departmentFilterValue}
+                    handleMainTagCheckboxChange={handleMainTagCheckboxChange}
+                    handleSpecializationDropdownChange={handleSpecializationDropdownChange}
+                    handleDropdownChange={handleDropdownChange}
+                    handleMainTagReset={handleMainTagReset}
+                    handleSpecializationReset={handleSpecializationReset}
+                    handleDepartmentReset={handleDepartmentReset}
+                    handleSearchChange={handleSearchChange}
+                    handleRestart={handleRestart}
+                    searchQuery={searchQuery}
+                />
+                <div className="graph-and-legend-container">
+                    <div className="graph-wrapper">
+                        <Graph
+                            graph={filteredGraph}
+                            options={options}
+                            events={events}
+                            getNetwork={handleGetNetwork}
+                        />
+                        <div id="custom-popup" className="custom-popup" style={{ display: 'none' }} />
+                        {selectedNode && (
+                            <div className="dialog">
+                                <Dialog node={selectedNode} onClose={closeDialog} onMainTagClick={handleMainTagClick} />
+                            </div>
+                        )}
+                    </div>
+                    <div className="legend-wrapper">
+                        <LegendGraphView />
+                    </div>
                 </div>
-                <div className="legend-wrapper">
-                    <LegendGraphView />
-                </div>
+                <ComparisonDialog
+                    nodes={selectedNodes}
+                    onClose={handleCloseComparismDialog}
+                    onMainTagClick={(mainTag: string) => {
+                        setMainTagFilterValue(mainTag);
+                        handleCloseComparismDialog();
+                    }}
+                />
             </div>
-            {/* <button onClick={handleOpenComparisonDialog}>Otevřít detail vybraných předmětů</button>
-            {isDialogOpen && ( */}
-            <ComparisonDialog
-                nodes={selectedNodes}
-                onClose={handleCloseComparismDialog}
-                onMainTagClick={(mainTag: string) => {
-                    setMainTagFilterValue(mainTag);
-                    handleCloseComparismDialog();
-                }}
-            />
-            {/* )}  */}
-        </div>
-    );
-}
-
-export default GraphView;
+        );
+    }
+    
+    export default GraphView;
+    

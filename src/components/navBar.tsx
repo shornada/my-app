@@ -1,4 +1,3 @@
-// SideBar.tsx
 import React, { useState } from 'react';
 import { Container, Content, ClosedSideBar, OpenSideBar } from "./styles";
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -9,20 +8,34 @@ import { IoGrid } from "react-icons/io5";
 import { CurrentView } from "../App";
 
 interface SideBarProps {
-  toggleView: (view: CurrentView) => void;
-  openHelpModal: () => void;
-  closeHelpModal: () => void;
-  isHelpModalOpen: boolean;
+  toggleView: (view: CurrentView) => void; 
+  openHelpModal: () => void; 
+  closeHelpModal: () => void; 
+  isHelpModalOpen: boolean; 
 }
 
+/**
+ * Component representing the sidebar navigation.
+ * @param toggleView - Function to toggle between graph and grid views.
+ * @param openHelpModal - Function to open the help modal.
+ * @param closeHelpModal - Function to close the help modal.
+ * @param isHelpModalOpen - Flag indicating whether the help modal is open or closed.
+ */
 export function SideBar({ toggleView, openHelpModal, closeHelpModal, isHelpModalOpen }: SideBarProps) {
   const [sideBar, setSideBar] = useState(false);
   const [selectedItem, setSelectedItem] = useState<CurrentView>('graph');
 
+  /**
+   * Toggles the sidebar between open and closed states.
+   */
   const handleChangeSideBar = () => {
     setSideBar(!sideBar);
   };
 
+  /**
+   * Handles the change of the selected view.
+   * @param view - The selected view ('graph' or 'grid').
+   */
   const handleViewChange = (view: CurrentView) => {
     toggleView(view);
     setSelectedItem(view);
@@ -30,13 +43,18 @@ export function SideBar({ toggleView, openHelpModal, closeHelpModal, isHelpModal
     closeHelpModal();
   };
 
+  /**
+   * Handles the click event for the help button.
+   * Opens the help modal.
+   */
   const handleHelpClick = () => {
-
-      openHelpModal();
-    
+    openHelpModal();
     setSideBar(false);
   };
 
+  /**
+   * Closes the help modal by clicking on the navigation bar.
+   */
   const handleCloseHelpByNavBar = () => {
     setSideBar(false);
     if (!isHelpModalOpen) {

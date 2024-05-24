@@ -1,19 +1,28 @@
 import React, { useRef, useEffect } from 'react';
-import { BarChart, Bars, Line, Scatter } from '@rsuite/charts';
+import { BarChart, Bars, Line } from '@rsuite/charts';
 import { dialogData, garantsTable } from '../data/dialogData';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { departments } from '../data/constantsAndEnums';
 
-
+// Define the properties that the Dialog component expects
 interface DialogProps {
   node: number;
   onClose: () => void;
   onMainTagClick: (mainTag: string) => void;
 }
 
+/**
+ * Dialog component that displays detailed information about a course.
+ * @param {DialogProps} props - The properties passed to the component.
+ * @param {number} props.node - The ID of the node (course) to display.
+ * @param {function} props.onClose - Callback function to close the dialog.
+ * @param {function} props.onMainTagClick - Callback function to handle clicks on the main tag.
+ * @returns {JSX.Element} The rendered Dialog component.
+ */
 const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
+  // Hook to handle clicks outside the modal to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
@@ -31,8 +40,10 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
     };
   }, [onClose]);
 
+  // Find the data for the current node
   const currentNodeData = dialogData.find((item) => item.ID === node);
 
+  // If no data found for the node, display an error message
   if (!currentNodeData) {
     return (
       <div className="modal">
@@ -46,6 +57,7 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
     );
   }
 
+  // Format the "Obsah" data for the bar chart
   const obsahData = currentNodeData.Obsah || [];
   const formattedObsahData: [string, ...number[]][] = obsahData.map((entry) => {
     if (Array.isArray(entry) && entry.length >= 2 && typeof entry[0] === 'string') {
@@ -54,8 +66,7 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
     return ['Invalid Entry', 0];
   });
 
-
-
+  // Format the "SemesterSchedule" data for the bar chart
   const sampleData2 = currentNodeData?.SemesterSchedule || null;
   const formattedSampleData: [string, ...number[]][] = sampleData2
     ? sampleData2.map(([label, ...values]: any[]) => [
@@ -63,12 +74,13 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
       ...(values.map(Number) as number[]),
     ])
     : [];
+
   const zaměření = currentNodeData.Zaměření;
 
   // Handling the case where "Zaměření" is a string
   const zaměřeníString = typeof zaměření === 'string' ? zaměření : '';
 
-  // Handling the case where "Zaměření" is an object
+  // Function to render "Zaměření" table if it is an object
   const renderZaměřeníTable = (zaměření: any) => {
     if (typeof zaměření === 'object') {
       return (
@@ -95,7 +107,6 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
 
   return (
     <div className="modal" ref={modalRef}>
-
       <div className="modal-content">
         <a href={currentNodeData.Odkaz as string} target="_blank" rel="noopener noreferrer">
           <h2>
@@ -105,11 +116,7 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
         </a>
         <ul className="dialog-list">
           {Object.entries(currentNodeData)
-            .filter(([key]) => key !== 'Obsah')
-            .filter(([key]) => key !== 'SemesterSchedule')
-            .filter(([key]) => key !== 'ID')
-            .filter(([key]) => key !== 'Název')
-            .filter(([key]) => key !== 'Odkaz')
+            .filter(([key]) => key !== 'Obsah' && key !== 'SemesterSchedule' && key !== 'ID' && key !== 'Název' && key !== 'Odkaz')
             .map(([key, value]) => (
               <li key={key}>
                 {key !== 'Zaměření' && <strong>{key}:</strong>}{' '}
@@ -152,13 +159,13 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
 
         <h3>Rozvržení obsahu předmětu</h3>
         <div className="barchart">
-
-        <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false}>
-          <Bars name="Nové znalosti" color="#2485C1" stack="A" />
-          <Bars name="Využití znalostí" color="#32A4D4" stack="A" />
-          <Bars name="Rozšíření znalostí" color="#34C3FF" stack="A" />
-        </BarChart>
+          <BarChart name="Rozvržení obsahu" data={formattedObsahData} yAxis={false}>
+            <Bars name="Nové znalosti" color="#2485C1" stack="A" />
+            <Bars name="Využití znalostí" color="#32A4D4" stack="A" />
+            <Bars name="Rozšíření znalostí" color="#34C3FF" stack="A" />
+          </BarChart>
         </div>
+
         <h3>Náročnost předmětu</h3>
         <BarChart data={formattedSampleData} yAxis={true}>
           <Bars barWidth="10px" name="Domácí úkol" color="#33FFAA" stack="A" />
@@ -168,9 +175,10 @@ const Dialog: React.FC<DialogProps> = ({ node, onClose, onMainTagClick }) => {
           <Bars name="Průběžný test" color="#FF3375" stack="A" />
           <Line name="Průběžná náročnost" color="red" area />
         </BarChart>
-         <button onClick={onClose} className="close-button">
-                                Zavřít
-                            </button> 
+
+        <button onClick={onClose} className="close-button">
+          Zavřít
+        </button>
       </div>
     </div>
   );

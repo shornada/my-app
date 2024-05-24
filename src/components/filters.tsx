@@ -2,6 +2,21 @@ import React from "react";
 import { graph1 } from "../data/graphData";
 import { departments } from "../data/constantsAndEnums";
 
+/**
+ * Props for the FilterComponent.
+ * @param {string} mainTagFilterValue - The current value of the main tag filter.
+ * @param {string} specializationFilterValue - The current value of the specialization filter.
+ * @param {string} departmentFilterValue - The current value of the department filter.
+ * @param {function} handleMainTagCheckboxChange - Function to handle changes in the main tag checkbox.
+ * @param {function} handleSpecializationDropdownChange - Function to handle changes in the specialization dropdown.
+ * @param {function} handleDropdownChange - Function to handle changes in the department dropdown.
+ * @param {function} handleMainTagReset - Function to reset the main tag filter.
+ * @param {function} handleSpecializationReset - Function to reset the specialization filter.
+ * @param {function} handleDepartmentReset - Function to reset the department filter.
+ * @param {function} handleSearchChange - Function to handle changes in the search input.
+ * @param {function} handleRestart - Function to handle the restart action.
+ * @param {string} searchQuery - The current value of the search query.
+ */
 interface FilterComponentProps {
     mainTagFilterValue: string;
     specializationFilterValue: string;
@@ -17,6 +32,11 @@ interface FilterComponentProps {
     searchQuery: string;
 }
 
+/**
+ * FilterComponent for filtering courses based on various criteria.
+ * @param {FilterComponentProps} props - The properties passed to the component.
+ * @returns {JSX.Element} The rendered FilterComponent.
+ */
 const FilterComponent: React.FC<FilterComponentProps> = ({
     mainTagFilterValue,
     specializationFilterValue,
@@ -31,6 +51,9 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     handleRestart,
     searchQuery
 }) => {
+    /**
+     * Handles the reset of all filters and the restart action.
+     */
     const handleRestartAll = () => {
         handleMainTagReset();
         handleSpecializationReset();
@@ -38,6 +61,9 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
         handleRestart();
     };
 
+    /**
+     * Generates options for the department dropdown.
+     */
     const departmentOptions = Object.keys(departments).map((code) => {
         const department = departments[code as unknown as keyof typeof departments];
         return (
