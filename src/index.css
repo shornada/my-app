@@ -188,11 +188,11 @@ span.main-tag:hover::after {
   width: max-content; /* Make the tooltip size based on content */
 
   /* Check if the tooltip exceeds the left or right edge of the dialog */
-  left: max(10px, min(50%, left - 50%)); /* Adjust as needed */
+  left: max(10px, min(50%, left - 50%)); 
   right: auto;
 }
 
-/* GridView.css */
+/* GridView */
 
 .grid-container {
   margin: 20px;
@@ -231,7 +231,7 @@ span.main-tag:hover::after {
   text-decoration: underline;
 }
 
-/* Add these styles to GridView.css */
+/* GridView */
 
 .grid-tiles {
   display: grid;
@@ -285,19 +285,19 @@ span.main-tag:hover::after {
 .graph-and-legend-container {
   display: grid;
   grid-template-columns: 8fr 1fr; /* Ratio*/
-  gap: 10px; /* Adjust as needed */
+  gap: 10px; 
 }
 
 .graph-wrapper {
-  width: 100%; /* Adjust as needed */
-  height: 100%; /* Adjust as needed */
+  width: 100%; 
+  height: 100%; 
   position: relative;
   border: 1px solid #ddd;
 }
 
 .legend-wrapper {
-  width: 100%; /* Adjust as needed */
-  height: 100%; /* Adjust as needed */
+  width: 100%; 
+  height: 100%; 
 }
 
 /* Add your other styles as needed */
